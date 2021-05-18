@@ -34,6 +34,7 @@ gem 'simple_form'
 
 # added gems
 gem 'devise'
+gem 'faker'
 
 group :development, :test do
   gem 'pry-byebug'
