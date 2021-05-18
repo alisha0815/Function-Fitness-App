@@ -1,0 +1,2 @@
+class PersonalizedTrainersController < ApplicationController
+end

@@ -1,0 +1,25 @@
+<div class="container"> <strong> Personal Trainers </strong>
+  <div class="row justify-content">
+    <div class="col-6">
+
+      <ul id="trainers">
+        <% @trainers.each do |trainer| %>
+          <li>
+            <% if trainer.search %>
+            <i class="fa fa-check-square-o"></i>
+            <% else %>
+            <i class="fa fa-square-o"></i>
+            <% end %>
+            <%= link_to trainer.name, trainer_path(trainer.id) %>
+          </li>
+        <% end %>  
+      </ul>
+
+      <%= link_to new_trainer_path do %>
+      <i class="fa fa-plus"></i>  ???
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
