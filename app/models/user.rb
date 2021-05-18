@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :personalized_trainers, dependent: :destroy
-  has_one :personalized_trainer, through: booking # one or many?
+  # has_one :personalized_trainer, through: booking # one or many?
 
   # validations for user attributes?
 end

@@ -1,6 +1,6 @@
 class PersonalizedTrainer < ApplicationRecord
   belongs_to :user
-  has_one :user, through: booking # one or many?
+  # has_one :user, through: booking # one or many?
 
   validates :name, presence: true
   validates :category, presence: true
