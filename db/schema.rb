@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_140446) do
+ActiveRecord::Schema.define(version: 2021_05_18_153409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "fee"
+    t.text "goal"
+    t.string "status", default: "pending"
+    t.bigint "user_id", null: false
+    t.bigint "personalized_trainer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["personalized_trainer_id"], name: "index_bookings_on_personalized_trainer_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "personalized_trainers", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.text "description"
+    t.string "location"
+    t.integer "rate"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_personalized_trainers_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.boolean "recommend", default: true
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +59,18 @@ ActiveRecord::Schema.define(version: 2021_05_17_140446) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "gender"
+    t.integer "age"
+    t.string "location"
+    t.integer "weight"
+    t.string "mobile_num"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "personalized_trainers"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "personalized_trainers", "users"
+  add_foreign_key "reviews", "bookings"
 end
