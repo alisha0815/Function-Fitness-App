@@ -1,6 +1,6 @@
 class PersonalizedTrainersController < ApplicationController
 
 	def index
-		@trainers = Trainer.all
+		@personalized_trainers = PersonalizedTrainer.all
 	end
 end
