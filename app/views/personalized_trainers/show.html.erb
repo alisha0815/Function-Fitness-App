@@ -3,10 +3,15 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-6">
-      <h1>This is the show page for the personal trainer</h1>
+      <h1>Personal Trainer</h1>
 
-      <h2>Name: <%= @personalized_trainer.name%></h2>
-      <p>Category: <%= @personalized_trainer.category%></p>
+      <%= link_to "image" %>
+      <h4><%= link_to @personalized_trainer.name %></h4>
+      <h5> Category: <%= @personalized_trainer.category %></h5>
+      <p> City: <%= @personalized_trainer.location %></p>
+      <p> <%= @personalized_trainer.description %></p>
+      <p> <%= @personalized_trainer.rate %>NOK</p>
+
     </div>
   </div>
 </div>

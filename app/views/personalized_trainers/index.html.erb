@@ -1,25 +1,20 @@
-<div class="container"> <strong> Personal Trainers </strong>
-  <div class="row justify-content">
-    <div class="col-6">
-
-      <ul id="personalized_trainers">
-        <% @personalized_trainers.each do |personalized_trainer| %>
-          <li>
-            <% if personalized_trainer.search %>
-            <i class="fa fa-check-square-o"></i>
-            <% else %>
-            <i class="fa fa-square-o"></i>
-            <% end %>
-            <%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id) %>
-          </li>
-        <% end %>  
-      </ul>
-
-      <%= link_to new_trainer_path do %>
-      <i class="fa fa-plus"></i> 
+<div class="container-fluidainer">
+  <h1 class="text-center"><strong> Personal Trainers </strong></h1>
+  <div class="row">
+      <% @personalized_trainers.each do |personalized_trainer| %>
+        <div class="col-sm mb-2 d-flex justify-content-center">
+          <div class="card" style="width: 24rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id) %></h4>
+              <h5> Category: <%= personalized_trainer.category %></h5>
+              <p class="card-text"> City: <%= personalized_trainer.location %></p>
+              <p class="card-text"> <%= personalized_trainer.description %></p>
+              <p class="card-text"> <%= personalized_trainer.rate %>NOK</p>
+            </div>
+          </div>
+        </div>
       <% end %>
-
-    </div>
   </div>
 </div>
 
