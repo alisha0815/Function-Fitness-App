@@ -16,8 +16,7 @@ class PersonalizedTrainersController < ApplicationController
   def create
     @personalized_trainer = PersonalizedTrainer.new(personalized_trainer_params)
     if @personalized_trainer.save
-      raise
-      redirect_to personalized_trainer_path(@personalized_trainer)
+      redirect_to personalized_trainers_path
     else
       render :new
     end

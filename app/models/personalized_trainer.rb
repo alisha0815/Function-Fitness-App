@@ -1,5 +1,6 @@
 class PersonalizedTrainer < ApplicationRecord
   has_one_attached :photo
+
   belongs_to :user
   # has_one :user, through: booking # one or many?
 
