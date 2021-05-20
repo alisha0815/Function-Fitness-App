@@ -3,14 +3,14 @@
   <div class="row">
       <% @personalized_trainers.each do |personalized_trainer| %>
         <div class="col-sm mb-2 d-flex justify-content-center">
-          <div class="card" style="width: 24rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card" style="width: 24rem; ">
+            <%= cl_image_tag personalized_trainer.photo.key, crop: :fill%>
             <div class="card-body">
               <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id) %></h4>
               <h5> Category: <%= personalized_trainer.category %></h5>
               <p class="card-text"> City: <%= personalized_trainer.location %></p>
               <p class="card-text"> <%= personalized_trainer.description %></p>
-              <p class="card-text"> <%= personalized_trainer.rate %>NOK</p>
+              <p class="card-text"> <%= personalized_trainer.rate %> NOK</p>
             </div>
           </div>
         </div>
