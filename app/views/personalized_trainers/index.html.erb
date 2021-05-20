@@ -9,9 +9,9 @@
             <%= cl_image_tag personalized_trainer.photo.key, crop: :fill %>
             <% end %>
             <div class="card-body">
-              <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id) %></h4>
+              <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainers_path(personalized_trainer.id) %></h4>
               <%# added this line as a link to edit page %>
-              <h4 class="card-title"><%= link_to "Edit", edit_personalized_trainers_path %></h4>
+              <h4 class="card-title"><%= link_to "Edit", edit_personalized_trainer_path %></h4>
               <h5> Category: <%= personalized_trainer.category %></h5>
               <p class="card-text"> City: <%= personalized_trainer.location %></p>
               <p class="card-text"> <%= personalized_trainer.description %></p>
