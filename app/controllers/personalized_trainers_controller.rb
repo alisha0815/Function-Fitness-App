@@ -1,16 +1,11 @@
 class PersonalizedTrainersController < ApplicationController
   before_action :set_personalized_trainer, only: [:show, :edit, :destroy, :update]
-  
 
   def index
     @personalized_trainers = PersonalizedTrainer.all
   end
-  
+
   def show
-<<<<<<< HEAD
-    set_personalized_trainer
-=======
->>>>>>> 157b58e4ba1b2531743035f53e2d225063f259c6
   end
 
   def new
@@ -27,12 +22,10 @@ class PersonalizedTrainersController < ApplicationController
     end
   end
 
-  def edit 
-<<<<<<< HEAD
-    set_personalized_trainer
-  end 
+  def edit
+  end
 
-  def update 
+  def update
     set_personalized_trainer
     if @personalized_trainer.update(personalized_trainer_params)
       redirect_to @personalized_trainer
@@ -40,15 +33,12 @@ class PersonalizedTrainersController < ApplicationController
       render :edit
     end
   end
-  
-=======
-  end
 
-  def update 
+  def update
     if @personalized_trainer.update(personalized_trainer_params)
       redirect_to personalized_trainers_path(@personalized_trainer)
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -56,7 +46,6 @@ class PersonalizedTrainersController < ApplicationController
     @personalized_trainer.destroy
     redirect_to personalized_trainers_path
   end
->>>>>>> 157b58e4ba1b2531743035f53e2d225063f259c6
 
   private
 
