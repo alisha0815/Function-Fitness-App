@@ -1,20 +1,27 @@
+
 <div class="container-fluidainer">
   <h1 class="text-center"><strong> Personal Trainers </strong></h1>
   <div class="row">
       <% @personalized_trainers.each do |personalized_trainer| %>
         <div class="col-sm mb-2 d-flex justify-content-center">
           <div class="card shadow p-3 mb-3 bg-white rounded" style="width: 24rem; ">
+            <% if personalized_trainer.photo.attached? %>
             <%= cl_image_tag personalized_trainer.photo.key, crop: :fill%>
+            <% end %>
             <div class="card-body">
               <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id) %></h4>
               <h5> Category: <%= personalized_trainer.category %></h5>
               <p class="card-text"> City: <%= personalized_trainer.location %></p>
               <p class="card-text"> <%= personalized_trainer.description %></p>
               <p class="card-text"> <%= personalized_trainer.rate %> NOK</p>
+              <%# added this line as a link to edit page %>
+              <p class="card-title"><%= link_to "Edit", edit_personalized_trainer_path(personalized_trainer) %></p>
+              <p><%= link_to 'delete', personalized_trainer_path(personalized_trainer), method: :delete, data: { confirm: "Delete ?" } %></p>
             </div>
           </div>
         </div>
-      <% end %>
+       <% end %>
   </div>
 </div>
+
 

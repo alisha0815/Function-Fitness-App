@@ -1,0 +1,20 @@
+<h1>My edit page for personalized_trainer</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h5> Update Personal Trainer </h5>
+
+        <%= simple_form_for(@personalized_trainer) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :category, placeholder: 'eg. crossfit' %>
+        <%= f.input :description, placeholder: 'eg. education' %>
+        <%= f.input :location, placeholder: 'eg. city' %>
+        <%= f.input :rate, placeholder: 'per day' %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+
+    </div>
+  </div>
+</div>
