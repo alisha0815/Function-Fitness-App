@@ -5,9 +5,8 @@ class PersonalizedTrainersController < ApplicationController
   def index
     @personalized_trainers = PersonalizedTrainer.all
   end
-  # is empty because of before action
+  
   def show
-    
   end
 
   def new
@@ -23,18 +22,23 @@ class PersonalizedTrainersController < ApplicationController
       render :new
     end
   end
-  # is empty because of before action
+
   def edit 
-    
   end
-  # before action is beiing called on that method as well
+
   def update 
     if @personalized_trainer.update(personalized_trainer_params)
-      redirect_to personalized_trainers_path
+      redirect_to personalized_trainers_path(@personalized_trainer)
     else
       render :edit 
     end
   end
+
+  def destroy
+    @personalized_trainer.destroy
+    redirect_to personalized_trainers_path
+  end
+
   private
 
   def set_personalized_trainer
