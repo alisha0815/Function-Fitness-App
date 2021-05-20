@@ -1,12 +1,13 @@
 class PersonalizedTrainersController < ApplicationController
-  before_action :set_personalized_trainer, only: [:show, :edit, :destroy]
+  before_action :set_personalized_trainer, only: [:show, :edit, :destroy, :update]
+  
 
   def index
     @personalized_trainers = PersonalizedTrainer.all
   end
-
+  # is empty because of before action
   def show
-    @personalized_trainer = PersonalizedTrainer.find(params[:id])
+    
   end
 
   def new
@@ -22,7 +23,18 @@ class PersonalizedTrainersController < ApplicationController
       render :new
     end
   end
-
+  # is empty because of before action
+  def edit 
+    
+  end
+  # before action is beiing called on that method as well
+  def update 
+    if @personalized_trainer.update(personalized_trainer_params)
+      redirect_to personalized_trainers_path
+    else
+      render :edit 
+    end
+  end
   private
 
   def set_personalized_trainer
