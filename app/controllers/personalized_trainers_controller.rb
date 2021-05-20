@@ -6,7 +6,7 @@ class PersonalizedTrainersController < ApplicationController
   end
 
   def show
-    @personalized_trainer = PersonalizedTrainer.find(params[:id])
+    set_personalized_trainer
   end
 
   def new
@@ -22,6 +22,20 @@ class PersonalizedTrainersController < ApplicationController
       render :new
     end
   end
+
+  def edit 
+    set_personalized_trainer
+  end 
+
+  def update 
+    set_personalized_trainer
+    if @personalized_trainer.update(personalized_trainer_params)
+      redirect_to @personalized_trainer
+    else
+      render :edit
+    end
+  end
+  
 
   private
 
