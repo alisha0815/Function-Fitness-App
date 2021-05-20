@@ -7,10 +7,7 @@ class PersonalizedTrainersController < ApplicationController
   end
   
   def show
-<<<<<<< HEAD
     set_personalized_trainer
-=======
->>>>>>> 157b58e4ba1b2531743035f53e2d225063f259c6
   end
 
   def new
@@ -28,7 +25,6 @@ class PersonalizedTrainersController < ApplicationController
   end
 
   def edit 
-<<<<<<< HEAD
     set_personalized_trainer
   end 
 
@@ -41,22 +37,6 @@ class PersonalizedTrainersController < ApplicationController
     end
   end
   
-=======
-  end
-
-  def update 
-    if @personalized_trainer.update(personalized_trainer_params)
-      redirect_to personalized_trainers_path(@personalized_trainer)
-    else
-      render :edit 
-    end
-  end
-
-  def destroy
-    @personalized_trainer.destroy
-    redirect_to personalized_trainers_path
-  end
->>>>>>> 157b58e4ba1b2531743035f53e2d225063f259c6
 
   private
 
