@@ -10,12 +10,12 @@
             <% end %>
             <div class="card-body">
               <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainers_path(personalized_trainer.id) %></h4>
-              <%# added this line as a link to edit page %>
-              <h4 class="card-title"><%= link_to "Edit", edit_personalized_trainer_path %></h4>
               <h5> Category: <%= personalized_trainer.category %></h5>
               <p class="card-text"> City: <%= personalized_trainer.location %></p>
               <p class="card-text"> <%= personalized_trainer.description %></p>
               <p class="card-text"> <%= personalized_trainer.rate %> NOK</p>
+              <%# added this line as a link to edit page %>
+              <p class="card-title"><%= link_to "Edit", edit_personalized_trainer_path(personalized_trainer) %></p>
               <p><%= link_to 'delete', personalized_trainer_path(personalized_trainer), method: :delete, data: { confirm: "Delete ?" } %></p>
             </div>
           </div>
