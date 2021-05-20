@@ -1,11 +1,10 @@
 class PersonalizedTrainersController < ApplicationController
   before_action :set_personalized_trainer, only: [:show, :edit, :destroy, :update]
-  
 
   def index
     @personalized_trainers = PersonalizedTrainer.all
   end
-  
+
   def show
     set_personalized_trainer
   end
@@ -28,7 +27,7 @@ class PersonalizedTrainersController < ApplicationController
     set_personalized_trainer
   end 
 
-  def update 
+  def update
     set_personalized_trainer
     if @personalized_trainer.update(personalized_trainer_params)
       redirect_to @personalized_trainer
