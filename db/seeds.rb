@@ -5,3 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts 'Creating users'
+20.times do
+  user = User.create(
+    email: Faker::Internet.email(domain: 'gmail'),
+    password: "password",
+    name: Faker::Name.name,
+    gender: Faker::Gender.type,
+    age: rand(20..80),
+    location: Faker::Address.street_address,
+    weight: rand(40..150),
+    mobile_num: Faker::PhoneNumber.cell_phone
+  )
+  puts "user #{user.id} is created"
+end
+
+puts "done"
+
+puts 'Creating Personalized trainers'
+20.times do
+  personalized_trainer = PersonalizedTrainer.create(
+    user: User.all.sample,
+    name: Faker::Name.name,
+    category: %w[balance core crossfit yoga philates].sample,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    location: Faker::Address.street_address,
+    rate: rand(20..100),
+  )
+  puts "Personal trainer #{personalized_trainer.id} is created"
+end
+
+puts "done"

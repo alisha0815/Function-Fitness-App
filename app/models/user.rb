@@ -6,6 +6,5 @@ class User < ApplicationRecord
 
   has_many :personalized_trainers, dependent: :destroy
   # has_one :personalized_trainer, through: booking # one or many?
-
   # validations for user attributes?
 end
