@@ -15,6 +15,7 @@ class PersonalizedTrainersController < ApplicationController
 
   def create
     @personalized_trainer = PersonalizedTrainer.new(personalized_trainer_params)
+    @personalized_trainer.user_id = current_user.id
     if @personalized_trainer.save
       redirect_to personalized_trainers_path
     else
@@ -29,6 +30,6 @@ class PersonalizedTrainersController < ApplicationController
   end
 
   def personalized_trainer_params
-    params.require(:personalized_trainer).permit(:name, :category, :description, :location, :rate, :photo)
+    params.require(:personalized_trainer).permit(:name, :category, :description, :location, :rate, :photo, :user_id)
   end
 end
