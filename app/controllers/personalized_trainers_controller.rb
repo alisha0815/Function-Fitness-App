@@ -3,6 +3,15 @@ class PersonalizedTrainersController < ApplicationController
 
   def index
     @personalized_trainers = PersonalizedTrainer.all
+    # @personalized_trainers = PersonalizedTrainer.where.not(latitude: nil, longitude: nil)
+
+    @markers = @personalized_trainers.geocoded.map do |personalized_trainer|
+      {
+        lat: personalized_trainer.latitude,
+        lng: personalized_trainer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { personalized_trainer: personalized_trainer })
+      }
+    end
   end
 
   def show
