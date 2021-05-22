@@ -44,19 +44,7 @@ class PersonalizedTrainersController < ApplicationController
       render :edit
     end
   end
-
-  def update
-    if @personalized_trainer.update(personalized_trainer_params)
-      redirect_to personalized_trainers_path(@personalized_trainer)
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @personalized_trainer.destroy
-    redirect_to personalized_trainers_path
-  end
+  
 
   private
 
