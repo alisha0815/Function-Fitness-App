@@ -44,7 +44,6 @@ class PersonalizedTrainersController < ApplicationController
       render :edit
     end
   end
-  
 
   private
 

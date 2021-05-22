@@ -40,10 +40,17 @@
       <% end %>
     </table>
   </div>
+
+  <h1>My bookings</h1>
+  <% if @bookings %>
+    <%@bookings.each do |booking|  %>
+      <p><%= booking.personalized_trainer.name %></p>
+      <p><%= booking.start_date %></p>
+      <p><%= booking.end_date %></p>
+      <p><%= booking.fee %>$</p>
+      <p><%=link_to "Leave a review", new_booking_review_path([:booking_id])  %></p>
+    <%end %>
+  <%end %>
+
 </div>
 
-<h1>My bookings</h1>
-<%@bookings.each do |booking|  %>
-<%= booking %>
-<p><%=link_to "Leave a review", new_booking_review_path([:booking_id])  %></p>
-<%end %>
