@@ -2,9 +2,14 @@ class PersonalizedTrainersController < ApplicationController
   before_action :set_personalized_trainer, only: [:show, :edit, :destroy, :update]
 
   def index
-    @personalized_trainers = PersonalizedTrainer.all
-    # @personalized_trainers = PersonalizedTrainer.where.not(latitude: nil, longitude: nil)
 
+    if params[:category]
+      @personalized_trainers = PersonalizedTrainer.where(category: params[:category])
+    else
+      @personalized_trainers = PersonalizedTrainer.all
+    end
+    
+    # @personalized_trainers = PersonalizedTrainer.where.not(latitude: nil, longitude: nil)
     @markers = @personalized_trainers.geocoded.map do |personalized_trainer|
       {
         lat: personalized_trainer.latitude,
