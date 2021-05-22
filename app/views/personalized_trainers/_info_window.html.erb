@@ -1,0 +1,5 @@
+<% if personalized_trainer.photo.attached? %>
+  <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%>
+<% end %>
+<h2><%= personalized_trainer.name %></h2>
+<p><%= personalized_trainer.location %></p>

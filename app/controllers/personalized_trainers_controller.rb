@@ -1,16 +1,27 @@
 class PersonalizedTrainersController < ApplicationController
-  before_action :set_personalized_trainer, only: [:show, :edit, :destroy]
+  before_action :set_personalized_trainer, only: [:show, :edit, :destroy, :update]
 
   def index
+
     if params[:category]
       @personalized_trainers = PersonalizedTrainer.where(category: params[:category])
     else
       @personalized_trainers = PersonalizedTrainer.all
     end
+    
+    # @personalized_trainers = PersonalizedTrainer.where.not(latitude: nil, longitude: nil)
+    @markers = @personalized_trainers.geocoded.map do |personalized_trainer|
+      {
+        lat: personalized_trainer.latitude,
+        lng: personalized_trainer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { personalized_trainer: personalized_trainer }),
+        # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+      }
+    end
   end
 
   def show
-    @personalized_trainer = PersonalizedTrainer.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -19,7 +30,7 @@ class PersonalizedTrainersController < ApplicationController
 
   def create
     @personalized_trainer = PersonalizedTrainer.new(personalized_trainer_params)
-    @personalized_trainer.user_id = current_user.id
+    @personalized_trainer.user = current_user
     if @personalized_trainer.save
       redirect_to personalized_trainers_path
     else
@@ -27,9 +38,16 @@ class PersonalizedTrainersController < ApplicationController
     end
   end
 
-  def destroy
-    @personalized_trainer.destroy
-    redirect_to personalized_trainers_path
+  def edit
+  end
+
+  def update
+    set_personalized_trainer
+    if @personalized_trainer.update(personalized_trainer_params)
+      redirect_to @personalized_trainer
+    else
+      render :edit
+    end
   end
 
   private
