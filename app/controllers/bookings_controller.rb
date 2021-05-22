@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking.fee = @personalized_trainer.rate * (@booking.end_date - @booking.start_date).to_i
     if @booking.save
       flash[:alert] = "You have booked your personal trainer successfully"
-      redirect_to personalized_trainers_path
+      redirect_to dashboard_path
     else
       render "personalized_trainers/show"
     end
