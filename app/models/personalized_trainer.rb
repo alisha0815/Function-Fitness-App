@@ -4,6 +4,7 @@ class PersonalizedTrainer < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
 
   belongs_to :user
+  has_many :bookings
   # has_one :user, through: booking # one or many?
 
   validates :name, presence: true
