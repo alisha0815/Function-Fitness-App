@@ -6,7 +6,7 @@ class PersonalizedTrainersController < ApplicationController
   end
 
   def show
-    set_personalized_trainer
+    @booking = Booking.new
   end
 
   def new
@@ -23,9 +23,8 @@ class PersonalizedTrainersController < ApplicationController
     end
   end
 
-  def edit 
-    set_personalized_trainer
-  end 
+  def edit
+  end
 
   def update
     set_personalized_trainer

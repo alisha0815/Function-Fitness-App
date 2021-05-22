@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
 
-  resources :personalized_trainers
+  resources :personalized_trainers do
+    resources :bookings, only: [:create]
+  end
 
   get 'dashboard', to: 'dashboards#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
