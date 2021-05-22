@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:edit, :update]
+
+  def index
+    @bookings = Booking.all
+  end
 
   def create
     @booking = Booking.new(booking_params)
@@ -14,7 +19,23 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    set_booking
+    if @booking.update(booking_params)
+      redirect_to @booking
+    else
+      render :edit
+    end
+  end
+
+  def edit
+  end
+
   private
+
+  def set_booking
+    @booking = Booking.find(params[:personalized_trainer_id])
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :goal)

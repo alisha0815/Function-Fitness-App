@@ -7,7 +7,7 @@
       <h2 class="text-center"> <%= @personalized_trainer.name %> is a personal trainer in <%= @personalized_trainer.category %> </h2>
     </div>
     <div class="col-6">
-      <%#= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, crop: :fill%>
+      <%# cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, crop: :fill%>
       <h4><%= @personalized_trainer.name %></h4>
       <h5> Category: <%= @personalized_trainer.category %></h5>
       <p> City: <%= @personalized_trainer.location %></p>
@@ -15,30 +15,26 @@
       <p> <%= @personalized_trainer.rate %>NOK</p>
     </div>
   </div>
+</div>
 
-
-
-  <div class="row">
-    <h3> Make a booking: </h3>
-  </div>
-
-  <div class="row">
+<div class="row justify-content-center">
+  <div class="col-6">
     <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
-      <div class="dates">
-        <div class="form-inputs">
-          <div class="form-row">
-           
-            <%= f.input :start_date, as: :string, input_html: {type: :date} %>
-            <%= f.input :end_date, as: :string, input_html: {type: :date} %>
-            <%#= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
-          </div>
+    <h3> Make a booking </h3>
+    <div class="dates">
+      <div class="form-inputs">
+        <div class="form-row">           
+          <%= f.input :start_date, as: :string, input_html: {type: :date} %>
+          <%= f.input :end_date, as: :string, input_html: {type: :date} %>
         </div>
       </div>
-          <div class="form-inputs">
-            <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
-            <%= f.submit "Book now", class: "btn btn-primary btn-lg btn-block btn-booking" %>
-          </div>
-        </div>
-     <% end %>
+    </div>
+          
+  <div class="form-inputs">
+    <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
+    <%= f.submit "Book now", class: "btn btn-primary btn-lg btn-block btn-booking" %>
   </div>
-
+</div>
+    <% end %>
+  </div>
+</div>

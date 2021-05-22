@@ -10,7 +10,7 @@ class PersonalizedTrainersController < ApplicationController
         lat: personalized_trainer.latitude,
         lng: personalized_trainer.longitude,
         info_window: render_to_string(partial: "info_window", locals: { personalized_trainer: personalized_trainer }),
-        # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+        #image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
       }
     end
   end
