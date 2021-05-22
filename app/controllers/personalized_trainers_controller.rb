@@ -2,7 +2,11 @@ class PersonalizedTrainersController < ApplicationController
   before_action :set_personalized_trainer, only: [:show, :edit, :destroy]
 
   def index
-    @personalized_trainers = PersonalizedTrainer.all
+    if params[:category]
+      @personalized_trainers = PersonalizedTrainer.where(category: params[:category])
+    else
+      @personalized_trainers = PersonalizedTrainer.all
+    end
   end
 
   def show
