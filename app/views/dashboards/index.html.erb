@@ -20,7 +20,11 @@
       </tr>
       <% @personalized_trainers.each do |personalized_trainer| %>
         <tr class="border">
-          <td> <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%> </td>
+          <% if personalized_trainer.photo.attached? %>
+            <td> <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%> </td>
+          <% else %>
+              <td> </td>
+          <% end %>
           <td> <%= personalized_trainer.name %> </td>
           <td> <%= personalized_trainer.category %> </td>
           <td> <%= personalized_trainer.location %> </td>
