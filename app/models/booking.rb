@@ -20,4 +20,9 @@ class Booking < ApplicationRecord
       errors.add(:end_date, "must be after the start date")
     end
   end
+
+  def client
+    user
+  end
+
 end

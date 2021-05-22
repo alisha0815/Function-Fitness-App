@@ -11,4 +11,9 @@ class PersonalizedTrainer < ApplicationRecord
   # validates_length_of :description, minimum: 6
   validates :location, presence: true
   validates :rate, presence: true
+
+  def owner
+    user
+  end
+
 end
