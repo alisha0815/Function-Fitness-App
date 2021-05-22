@@ -25,7 +25,7 @@ class PersonalizedTrainersController < ApplicationController
 
   def create
     @personalized_trainer = PersonalizedTrainer.new(personalized_trainer_params)
-    @personalized_trainer.user_id = current_user.id
+    @personalized_trainer.user = current_user
     if @personalized_trainer.save
       redirect_to personalized_trainers_path
     else
