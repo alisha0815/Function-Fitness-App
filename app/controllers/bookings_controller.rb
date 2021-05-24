@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
       flash[:alert] = "You have booked your personal trainer successfully"
       redirect_to dashboard_path
     else
-      render "personalized_trainers/show"
+      render :new
     end
   end
 

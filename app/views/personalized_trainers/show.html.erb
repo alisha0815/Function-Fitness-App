@@ -1,12 +1,14 @@
 <div class="container">
 
-  <div class="row justify-content-center">
-    <div class="col-12 mb-3">
+  <div class="row mb-3">
+    <div class="col-12">
       <h2 class="text-center"> <%= @personalized_trainer.name %> is a personal trainer in <%= @personalized_trainer.category %> </h2>
     </div>
+  </div>
 
-    <div class="card-trip shadow m-4">
-      <div class="col-6">
+  <div class="row">
+    <div class="col-7 shadow m-2 p-3">
+      <div class="card-trip">
         <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, crop: :fill%>
         <div class="card-trip-infos">
           <h4><%= @personalized_trainer.name %></h4>
@@ -16,26 +18,50 @@
           <p> € <%= @personalized_trainer.rate %></p>
         </div>
       </div>
-  </div>
-
-<div class="row justify-content-center shadow">
-  <div class="col-6">
-    <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
-    <h3> Make a booking </h3>
-    <div class="dates">
-      <div class="form-inputs">
-        <div class="form-row">
-          <%= f.input :start_date, as: :string, input_html: {type: :date} %>
-          <%= f.input :end_date, as: :string, input_html: {type: :date} %>
-        </div>
-      </div>
     </div>
 
-  <div class="form-inputs">
-    <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
-    <%= f.submit "Book now", class: "btn btn-success btn-lg btn-block btn-booking" %>
+    <div class="col-4 shadow m-2 p-3">
+        <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
+        <h3> Make a booking </h3>
+        <div class="dates">
+          <div class="form-inputs">
+            <div class="form-row">
+              <%= f.input :start_date, as: :string, input_html: {type: :date} %>
+              <%= f.input :end_date, as: :string, input_html: {type: :date} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-inputs">
+          <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
+          <%= f.submit "Book now", class: "btn btn-success btn-lg btn-block btn-booking" %>
+          <%= link_to "Browse", personalized_trainers_path, class: "btn btn-primary btn-lg btn-block btn-booking" %>
+        </div>
+        <% end %>
+    </div>
   </div>
-</div>
-    <% end %>
+
+  <div class="row">
+    <div class="col-11 shadow m-3 p-4">
+      <h3>Reviews</h3>
+
+      <% if @bookings.empty? %>
+        <small><em class="text-muted">Be the first one to review this trainer</em></small>
+      <% end %>
+
+      <% if @bookings %>
+        <% @bookings.each do |booking| %>
+          <% booking.review.each do |review| %>
+          <div class="border-bottom mt-3">
+            <small><em class="text-muted"> <%= review.comment %> </em></small>
+            <p><em class="text-muted"> Rating: <%= review.rating %> </em></p>
+            <small><em class="text-muted"> <%= booking.user.name %> </em></small>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </div>
   </div>
+
 </div>

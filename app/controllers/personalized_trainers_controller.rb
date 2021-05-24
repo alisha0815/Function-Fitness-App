@@ -21,6 +21,8 @@ class PersonalizedTrainersController < ApplicationController
 
   def show
     @booking = Booking.new
+    @bookings = @personalized_trainer.bookings
+
   end
 
   def new
