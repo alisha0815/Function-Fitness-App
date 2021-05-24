@@ -1,24 +1,21 @@
-<h1>How was your session ?</h1>
+
 
 <div class="container">
 
-  <div class="row">
-    <h3> Make a booking: </h3>
+  <div class="">
+    <h2>How was your session with <%= @booking.personalized_trainer.name %> ?</h2>
+    <h3> Leave a Review: </h3>
   </div>
 
   <div class="row">
-    <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
-      <div class="dates">
-        <div class="form-inputs">
-          <div class="form-row">
-            <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
-            <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
-            <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
-            <%= f.submit "book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
-          </div>
-        </div>
-      </div>
-     <% end %>
+    <div class="col-6">
+      <%= simple_form_for [@booking, @review] do |f| %>
+        <%= f.input :comment %>
+        <%= f.input :rating, input_html: { min: '0', max: '5', step: '1' } %>
+        <%= f.input :recommend, as: :radio_buttons %>
+        <%= f.submit "Submit review", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 
 </div>
