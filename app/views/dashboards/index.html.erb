@@ -1,70 +1,133 @@
 
 <div class="container">
-  <div class="row">
-    <h2> Welcome to your dashboard!</h2>
-  </div>
+  <div class="row"><h1> Dashboard </h1></div>
 
   <div class="row">
-    <table class="table table-hover table-responsive">
-      <tr class="bg-info">
-        <th> </th>
-        <th> <%= link_to "Trainer", :sort => "name"%> </th>
-        <th> <%= link_to "Category", :sort => "category"%> </th>
-        <th> <%= link_to "Location", :sort => "location" %> </th>
-        <th> Rate </th>
-        <th> Booking Status </th>
-        <th> From </th>
-        <th> To </th>
-        <th> Session Fee </th>
-        <th> Trainee </th>
-        <th> </th>
-        <th> </th>
+    <div class="col-5">
+      <h2> Client Requests </h2>
+      <p> Please confirm client requests: </p>
+      <table class="table table-hover table-responsive shadow">
+      <tr class="">
+        <th> Personal Trainer </th>
+        <th> Start Date </th>
+        <th> End Date </th>
+        <th> Reservation Status </th>
+        <th> Client </th>
       </tr>
-      <% @personalized_trainers.each do |personalized_trainer| %>
-        <tr class="table-light">
-          <% if personalized_trainer.photo.attached? %>
-            <td> <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%> </td>
-          <% else %>
-              <td> </td>
-          <% end %>
-          <td> <%= personalized_trainer.name %> </td>
-          <td> <%= personalized_trainer.category %> </td>
-          <td> <%= personalized_trainer.location %> </td>
-          <td> <%= personalized_trainer.rate %> </td>
-          <td> <%= link_to "change status" %> </td>
-          <td>  </td>
-          <td>  </td>
-          <td>  </td>
-          <td>  </td>
-          <td> <%= link_to "edit", edit_personalized_trainer_path(personalized_trainer) %> </td>
-          <td> <%= link_to 'delete', personalized_trainer_path(personalized_trainer), method: :delete, data: { confirm: "Delete ?" } %> </td>
+
+      <% if @requests %>
+          <%@requests.each do |trainer|  %>
+            <%trainer.bookings.each do |booking|  %>
+              <% if booking.status == "pending" %>
+                <tr class="table-light">
+                  <td><%= trainer.name %></td>
+                  <td><%= booking.start_date %></td>
+                  <td><%= booking.end_date %></td>
+                  <td><%= booking.status %></td>
+                  <td><%= booking.user %></td>
+                </tr>
+              <%end %>
+            <%end %>
+          <%end %>
+        <%end %>
+      </table>
+
+      <h2> Client Reservations </h2>
+      <p> Confirmed client reservations: </p>
+      <table class="table table-hover table-responsive shadow">
+        <tr class="">
+          <th> Personal Trainer </th>
+          <th> Start Date </th>
+          <th> End Date </th>
+          <th> Reservation Status </th>
+          <th> Client </th>
         </tr>
-      <% end %>
-    </table>
+
+        <% if @requests %>
+          <%@requests.each do |trainer|  %>
+            <%trainer.bookings.each do |booking|  %>
+              <% if booking.status == "accept" %>
+                <tr class="table-light">
+                  <td><%= trainer.name %></td>
+                  <td><%= booking.start_date %></td>
+                  <td><%= booking.end_date %></td>
+                  <td><%= booking.status %></td>
+                  <td><%= booking.user %></td>
+                </tr>
+              <%end %>
+            <%end %>
+          <%end %>
+        <%end %>
+      </table>
+    </div>
+
+    <div class="col-7">
+      <h2> My Team </h2>
+      <p> Edit your team: </p>
+      <table class="table table-hover shadow">
+        <tr class="">
+          <th> </th>
+          <th> <%= link_to "Trainer", :sort => "name"%> </th>
+          <th> <%= link_to "Category", :sort => "category"%> </th>
+          <th> <%= link_to "Location", :sort => "location" %> </th>
+          <th> Rate </th>
+          <th> </th>
+          <th> </th>
+        </tr>
+        <% @personalized_trainers.each do |personalized_trainer| %>
+          <tr class="table-light">
+            <% if personalized_trainer.photo.attached? %>
+              <td> <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%> </td>
+            <% else %>
+                <td> </td>
+            <% end %>
+            <td> <%= personalized_trainer.name %> </td>
+            <td> <%= personalized_trainer.category %> </td>
+            <td> <%= personalized_trainer.location %> </td>
+            <td> <%= personalized_trainer.rate %> </td>
+            <td> <%= link_to "edit", edit_personalized_trainer_path(personalized_trainer) %> </td>
+            <td> <%= link_to 'delete', personalized_trainer_path(personalized_trainer), method: :delete, data: { confirm: "Delete ?" } %> </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 
-  <h2>My Booked Sessions </h2>
+  <div class="row">
+    <div class="col-12">
+      <h2> My training sessions </h2>
+        <p> These are the sessions that you have booked: </p>
+        <table class="table table-hover table-responsive shadow">
+          <tr class="">
+            <th> Personal Trainer </th>
+            <th> Start Date </th>
+            <th> End Date </th>
+            <th> Reservation Status </th>
+            <th> Change Reservation </th>
+            <th> Total Booking Fee </th>
+            <th> Review </th>
+            <th> My Goal </th>
+          </tr>
 
-  <table class="table table-hover table-responsive">
-    <tr class="bg-info">
-      <th> Personal Trainer </th>
-      <th> Start Date </th>
-      <th> End Date </th>
-      <th> Booking Fee </th>
-      <th>  </th>
-    </tr>
+          <% if @my_bookings %>
+            <%@my_bookings.each do |booking|  %>
+              <% if booking.status == "pending" || booking.status == "accept" %>
+                <tr class="table-light">
+                  <td><%= booking.personalized_trainer.name %></td>
+                  <td><%= booking.start_date %></td>
+                  <td><%= booking.end_date %></td>
+                  <td><%= booking.status %></td>
+                  <td><%=  %></td>
+                  <td><%= booking.fee %>$</td>
+                  <td><%=link_to "Leave a review", new_booking_review_path([:booking_id]) %></td>
+                  <td><%= booking.goal %></td>
+                </tr>
+              <%end %>
+            <%end %>
+            <%end %>
+        </table>
+    </div>
+  </div>
 
-    <% if @bookings %>
-      <%@bookings.each do |booking|  %>
-    <tr class="table-light">
-        <th><%= booking.personalized_trainer.name %></th>
-        <th><%= booking.start_date %></th>
-        <th><%= booking.end_date %></th>
-        <th><%= booking.fee %>$</th>
-        <th><%=link_to "Leave a review", new_booking_review_path([:booking_id]) %></th>
-      <%end %>
-    <%end %>
-    </tr>
-  </table>
 </div>
 

@@ -1,5 +1,14 @@
-<% if personalized_trainer.photo.attached? %>
-  <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%>
-<% end %>
-<h2><%= personalized_trainer.name %></h2>
-<p><%= personalized_trainer.location %></p>
+
+<div class="card shadow" style="width: 50;">
+  <div>
+    <% if personalized_trainer.photo.attached? %>
+      <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= personalized_trainer.name %></h5>
+    <p class="card-text"><%= personalized_trainer.category %></p>
+    <p class="card-text"><%= personalized_trainer.location %></p>
+    <p class="card-text"> <%= link_to "See more", personalized_trainer_path(personalized_trainer.id) %></p>
+  </div>
+</div>

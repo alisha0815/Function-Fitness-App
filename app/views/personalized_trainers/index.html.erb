@@ -16,14 +16,14 @@
           <h5> Category: <%= personalized_trainer.category %></h5>
           <p class="card-text"> City: <%= personalized_trainer.location %></p>
           <p class="card-text"> <%= personalized_trainer.description %></p>
-          <p class="card-text"> <%= personalized_trainer.rate %> NOK</p>
+          <p class="card-text"> € <%= personalized_trainer.rate %></p>
         </div>
       </div>
       <% end %>
     </div>
 
     <div class="col-7">
-      <div class="sticky-top">
+      <div class="sticky-top shadow rounded">
         <div class="" id="map"
         style="width: 100%; height: 600px;"
         data-markers="<%= @markers.to_json %>"
