@@ -46,7 +46,7 @@
       <h3>Reviews</h3>
 
       <% if @bookings.empty? %>
-        <small><em class="text-muted">Be the first one to review this trainer</em></small>
+        <small><em class="text-muted">Be the first one to review <%= @personalized_trainer.name %> </em></small>
       <% end %>
 
       <% if @bookings %>

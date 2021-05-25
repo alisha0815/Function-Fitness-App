@@ -1,15 +1,15 @@
 
 <div class="container">
   <div class="">
-    <h1> Dashboard </h1>
-    <h3> Welcome <%= current_user.name %> </h3>
+    <h1 class="stroke-heading"> Dashboard </h1>
+    <h2 class="stroke-heading"> Welcome <%= current_user.name %> </h2>
   </div>
 
   <div class="row">
     <div class="col-5">
-      <h2> Client Requests </h2>
+      <h3> Client Requests </h3>
       <p> Please confirm client requests: </p>
-      <table class="table table-hover table-responsive shadow">
+      <table class="table table-hover table-responsive table-sm shadow">
       <tr class="">
         <th> Personal Trainer </th>
         <th> Start Date </th>
@@ -35,9 +35,9 @@
       <% end %>
       </table>
 
-      <h2> Client Reservations </h2>
+      <h3> Client Reservations </h3>
       <p> Confirmed client reservations: </p>
-      <table class="table table-hover table-responsive shadow">
+      <table class="table table-hover table-responsive table-sm shadow">
         <tr class="">
           <th> Personal Trainer </th>
           <th> Start Date </th>
@@ -65,9 +65,9 @@
     </div>
 
     <div class="col-7">
-      <h2> My Team </h2>
+      <h3> My Team </h3>
       <p> Edit your team: </p>
-      <table class="table table-hover shadow">
+      <table class="table table-hover table-sm shadow">
         <tr class="">
           <th> </th>
           <th> <%= link_to "Trainer", :sort => "name"%> </th>
@@ -98,9 +98,9 @@
 
   <div class="row">
     <div class="col-12">
-      <h2> <%= current_user.name %>'s training sessions </h2>
+      <h3> <%= current_user.name %>'s training sessions </h3>
         <p> These are the sessions that you have booked: </p>
-        <table class="table table-hover table-responsive shadow">
+        <table class="table table-hover table-responsive table-sm shadow">
           <tr class="">
             <th> Personal Trainer </th>
             <th> Start Date </th>
