@@ -120,7 +120,7 @@
                   <td><%= booking.start_date %></td>
                   <td><%= booking.end_date %></td>
                   <td><%= booking.status %></td>
-                  <td><%=  %></td>
+                  <td><%= link_to "Edit booking", edit_personalized_trainer_booking_path(booking.personalized_trainer_id, booking) %></td>
                   <td><%= booking.fee %>$</td>
                   <td><%=link_to "Leave a review", new_booking_review_path(booking.id) %></td>
                   <td><%= booking.goal %></td>
