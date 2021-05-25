@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
 
   resources :personalized_trainers do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :update, :edit]
   end
 
   get 'dashboard', to: 'dashboards#index'
