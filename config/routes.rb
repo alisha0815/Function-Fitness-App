@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
 
   resources :personalized_trainers do
-    resources :bookings, only: [:create, :edit, :update]
+    resources :bookings, only: [:create, :edit, :update, :destroy]
   end
 
   get 'dashboard', to: 'dashboards#index'
 
-  resources :bookings, only: [:update] do
+  resources :bookings, only: [:update, :destroy] do
     resources :reviews, only: [:new, :create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

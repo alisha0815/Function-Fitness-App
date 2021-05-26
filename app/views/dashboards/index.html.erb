@@ -7,8 +7,8 @@
 
   <div class="row">
     <div class="col-5">
-      <h3> Client Requests (Pending) </h3>
-      <p> Please confirm client requests: </p>
+      <h3> Pending Client Requests </h3>
+      <p> Please confirm client requests: <% if @requests.count > 0 %><%= @requests.count %><% end %> </p>
       <table class="table table-hover table-responsive table-sm shadow">
       <tr class="">
         <th> Personal Trainer </th>
@@ -28,13 +28,14 @@
                   <td><%= booking.end_date %></td>
                   <td>
                     <% if booking.status == "pending" %>
-                    <%= simple_form_for booking do |f| %>
-                    <%= f.input :status, as: :hidden, :input_html => { :value => "accepted" } %>
-                    <%= f.button :submit, "accept", class: 'far fa-check-circle' %>
-                    <% end %>
-                    <%= simple_form_for booking do |f| %>
-                    <%= f.input :status, as: :hidden, :input_html => { :value => "declined" } %>
-                    <%= f.button :submit, "decline", class: 'far fa-window-close' %>
+                      <%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, :input_html => { :value => "accepted" } %>
+                      <%= f.button :submit, "accept", class: 'far fa-check-circle' %>
+                      <% end %>
+                      <%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, :input_html => { :value => "declined" } %>
+                      <%= f.button :submit, "decline", class: 'far fa-window-close' %>
+                      <% end %>
                     <% end %>
                   </td>
                   <td><%= booking.user.name %></td>
@@ -43,7 +44,6 @@
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
       </table>
 
       <h3> Client Reservations </h3>
@@ -60,7 +60,7 @@
         <% if @requests %>
           <%@requests.each do |trainer|  %>
             <%trainer.bookings.each do |booking|  %>
-              <% if booking.status == "accept" %>
+              <% if booking.status == "accepted" %>
                 <tr class="table-light">
                   <td><%= trainer.name %></td>
                   <td><%= booking.start_date %></td>
@@ -121,11 +121,12 @@
             <th> Total Booking Fee </th>
             <th> Review </th>
             <th> My Goal </th>
+            <th> </th>
           </tr>
 
           <% if @my_bookings %>
             <%@my_bookings.each do |booking|  %>
-              <% if booking.status == "pending" || booking.status == "accept" %>
+              <% if booking.present? %>
                 <tr class="table-light">
                   <td><%= booking.personalized_trainer.name %></td>
                   <td><%= booking.start_date %></td>
@@ -133,8 +134,9 @@
                   <td><%= booking.status %></td>
                   <td><%= link_to "Edit booking", edit_personalized_trainer_booking_path(booking.personalized_trainer_id, booking) %></td>
                   <td><%= booking.fee %>$</td>
-                  <td><%=link_to "Leave a review", new_booking_review_path(booking.id) %></td>
                   <td><%= booking.goal %></td>
+                  <td><%=link_to "Leave a review", new_booking_review_path(booking.id) %></td>
+                  <td> <%= link_to 'delete', booking_path(booking), method: :delete, data: { confirm: "Delete ?" } %> </td>
                 </tr>
               <%end %>
             <%end %>
