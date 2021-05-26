@@ -1,5 +1,17 @@
 
 <div class="container">
+
+  <div>
+    <%= form_tag personalized_trainers_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a PT in your area" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
   <div class="text-center">
     <h1 class="stroke-heading display-1" > <strong> FUNCTIONAL FITNESS </strong> </h1>
     <h3 class="stroke-heading">fitness on your front door</h3>

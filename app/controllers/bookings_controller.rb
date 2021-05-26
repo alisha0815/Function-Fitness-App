@@ -15,6 +15,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking.user = current_user
+  end
+
   def update
     @booking.user = current_user
     set_booking
@@ -26,9 +30,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
-    @booking.user = current_user
-  end
 
   private
 
