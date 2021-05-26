@@ -1,9 +1,10 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-6">
-      <h5> Create a Personal Trainer </h5>
-
+    <div class="col-6 card">
+    <div class= "row justify-content-center">
+      <h4 class ="header"> Create a Personal Trainer </h4>
+    </div>
         <%= simple_form_for(@personalized_trainer) do |f| %>
         <%= f.input :name %>
         <%= f.input :category, placeholder: 'eg. crossfit' %>
