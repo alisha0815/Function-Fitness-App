@@ -38,6 +38,8 @@ gem 'faker'
 gem 'cloudinary', '~> 1.16.0'
 gem 'geocoder'
 gem 'bootstrap-datepicker-rails'
+gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons' 
 
 group :development, :test do
   gem 'pry-byebug'
