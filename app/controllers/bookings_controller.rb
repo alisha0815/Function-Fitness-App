@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :update]
+  before_action :set_booking, only: [:edit, :update, :destroy]
 
   def create
     @booking = Booking.new(booking_params)
@@ -20,9 +20,8 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.user = current_user
-    set_booking
     if @booking.update(booking_params)
+      # raise
       redirect_to dashboard_path(current_user)
       flash[:notice] = 'Booking updated!'
     else
@@ -30,12 +29,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking.destroy
+    redirect_to dashboard_path
+  end
 
   private
 
   def set_booking
-    #@booking.user = current_user
-    @booking = Booking.find(params[:personalized_trainer_id])
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params
