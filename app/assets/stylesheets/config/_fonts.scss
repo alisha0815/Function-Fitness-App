@@ -1,9 +1,23 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,200;0,300;1,100&family=Heebo:wght@100&family=Mulish:ital,wght@1,500&family=Orbitron&display=swap');
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+h3, h4 {
+  font-family: 'Exo 2', sans-serif;
+}
+
+p {
+  font-family: 'Mulish', sans-serif;
+}
+
+tr {
+  font-family: 'Heebo', sans-serif;
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

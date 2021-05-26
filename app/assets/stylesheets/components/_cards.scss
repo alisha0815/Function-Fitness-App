@@ -11,12 +11,17 @@
   height: 100%;
   width: 120px;
   object-fit: cover;
+  border-radius: 25px;
 }
 
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+}
+
+.card-product h4 {
+  border-top: 2px solid #d1d1d1;
 }
 
 .card-product p {
@@ -29,4 +34,13 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.card-product .card-product-infos small {
+  border-bottom: 4px solid #d1d1d1;
+}
+
+.rounded-card-border {
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

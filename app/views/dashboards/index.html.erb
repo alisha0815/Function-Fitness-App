@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-5">
-      <h3> Client Requests </h3>
+      <h3> Client Requests (Pending) </h3>
       <p> Please confirm client requests: </p>
       <table class="table table-hover table-responsive table-sm shadow">
       <tr class="">
@@ -26,12 +26,23 @@
                   <td><%= trainer.name %></td>
                   <td><%= booking.start_date %></td>
                   <td><%= booking.end_date %></td>
-                  <td><%= booking.status %></td>
+                  <td>
+                    <% if booking.status == "pending" %>
+                    <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, :input_html => { :value => "accepted" } %>
+                    <%= f.button :submit, "accept", class: 'far fa-check-circle' %>
+                    <% end %>
+                    <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, :input_html => { :value => "declined" } %>
+                    <%= f.button :submit, "decline", class: 'far fa-window-close' %>
+                    <% end %>
+                  </td>
                   <td><%= booking.user.name %></td>
                 </tr>
               <% end %>
             <% end %>
           <% end %>
+        <% end %>
       <% end %>
       </table>
 
@@ -98,7 +109,7 @@
 
   <div class="row">
     <div class="col-12">
-      <h3> <%= current_user.name %>'s training sessions </h3>
+      <h3> <%= current_user.name %>'s Training Sessions </h3>
         <p> These are the sessions that you have booked: </p>
         <table class="table table-hover table-responsive table-sm shadow">
           <tr class="">
