@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :personalized_trainers, dependent: :destroy
   has_many :bookings
   # validations for user attributes?
+  has_many :conversations, foreign_key: :sender_id
 end

@@ -1,0 +1,36 @@
+<div class="container">
+   <div class="col-md-8 m-auto">
+    <h3>Mailbox <i class="far fa-envelope"></i></h3>
+
+    <div class="p-2 rounded m-2 ">
+      <div class="">
+        <% @conversations.each do |conversation| %>
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+            <% if conversation.sender_id == current_user.id %>
+              <% recipient = User.find(conversation.recipient_id) %>
+            <% else %>
+              <% recipient = User.find(conversation.sender_id) %>
+            <% end %>
+            <p> <%= link_to recipient.name, conversation_messages_path(conversation) %> </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+  <div class="">
+    <h3>My contacts </h3>
+    <div class="p-2 rounded m-2 w-50">
+      <% @users.each do |user| %>
+        <% if user.id != current_user.id %>
+          <div class="">
+            <p> <i class="fas fa-paper-plane"></i> <%= link_to 'Send a message ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>to <%= user.name %> </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+</div>

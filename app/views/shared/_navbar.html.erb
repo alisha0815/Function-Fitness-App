@@ -1,4 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom">
+  <h3><i class="fas fa-volleyball-ball theme-color"></i></h3>
   <%= link_to "", class: "navbar-brand" do %>
     <% end %>
 
@@ -19,8 +20,8 @@
         <li class="nav-item dropdown">
           <%= image_tag "", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "My Profile", "#", class: "dropdown-item" %>
+            <%= link_to "Inbox", conversations_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
@@ -32,3 +33,6 @@
     </ul>
   </div>
 </div>
+
+
+<%#= link_to recipient.name conversation_messages_path(conversation) %>

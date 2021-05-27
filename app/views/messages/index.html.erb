@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-md-8 m-auto">
+    <h3> Chat History <i class="far fa-comments"></i> </h3>
+    <div class="p-3 border border-dark rounded m-3">
+      <% if @over_ten %>
+      <%= link_to 'Show Previous', '?m=all' %>
+      <% end %>
+
+      <div class="m-2">
+        <% @messages.each do |message| %>
+        <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <div class="">
+          <div class="">
+            <small> <%= user.name %> <em class="text-muted"> sent on <%= message.message_time %> </em> </small>
+            <div class="m-2 m-2 border-bottom">
+              <%= message.body %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+
+      <%= form_for [@conversation, @message], html: {class: ""} do |f| %>
+      <div class="">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+      <div class="m-2">
+        <%= f.submit "Send", class: "" %>
+      </div>
+        <%= link_to "Back to Messages", conversations_path, class: "" %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
