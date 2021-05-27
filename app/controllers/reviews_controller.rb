@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     if @review.save
       flash[:alert] = "You've left a review!"
-      @booking.destroy!
       redirect_to dashboard_path(@booking_id)
     else
       render :new

@@ -1,12 +1,12 @@
 class Booking < ApplicationRecord
   # enum status: [:pending, :accepted, :declined, :completed]
-  # STATUS = %w(pending accepted declined)
+  STATUS = %w(pending accepted declined completed)
 
   belongs_to :user
   belongs_to :personalized_trainer
   has_many :review
 
-  # validates :status, inclusion: { in: STATUS }
+  validates :status, inclusion: { in: STATUS }
   validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
