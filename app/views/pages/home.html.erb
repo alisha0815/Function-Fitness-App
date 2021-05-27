@@ -1,128 +1,136 @@
 
 <div class="container">
 
-  <div>
-    <%= form_tag personalized_trainers_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a PT in your area" %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-
-  <div class="text-center">
-    <h1 class="stroke-heading display-1" > <strong> FUNCTIONAL FITNESS </strong> </h1>
-    <h3 class="stroke-heading">fitness on your front door</h3>
-  </div>
-
   <div class="row justify-content-center">
-    <h3><span id="banner-typed-text"></span></h3>
-  </div>
-
-  <div class="row justify-content-around mb-3">
-    <%= link_to 'See All Personal Trainer', personalized_trainers_path, class: 'btn btn-success' %>
-    <%= link_to 'Add Personal Trainer', new_personalized_trainer_path, class: 'btn btn-success' %>
-  </div>
-</div>
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="First slide">
+    <div class="col-md-6 mt-4">
+      <div class="input-group">
+        <div class="">
+          <%= form_tag personalized_trainers_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control py-2 rounded-pill mr-1 pr-5",
+            placeholder: "Find a PT in your area" %>
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Third slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://images.unsplash.com/photo-1606335543042-57c525922933?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1054&q=80" alt="Fourth slide">
-        </div>
+          <%= submit_tag "Search", class: "btn rounded-pill border" %>
+          <% end %>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    </div>
+  </div>
+
+
+
+    <div class="col-md-12 text-center">
+      <h1 class="stroke-heading display-1" > <strong> FUNCTIONAL FITNESS </strong> </h1>
+      <h3 class="">fitness on your front door</h3>
     </div>
 
-<div class="container">
+    <div class="row justify-content-center">
+      <h3><span id="banner-typed-text"></span></h3>
+    </div>
 
-  <div class="row ">
+    <div class="row justify-content-around mb-3">
+      <%= link_to 'See All Personal Trainer', personalized_trainers_path, class: 'btn-theme' %>
+      <%= link_to 'Add Personal Trainer', new_personalized_trainer_path, class: 'btn-theme' %>
+    </div>
+  </div>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Third slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="https://images.unsplash.com/photo-1606335543042-57c525922933?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1054&q=80" alt="Fourth slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="container">
+
+    <div class="row ">
 
 
-      <div class="cards col-4">
+      <div class="cards col-md-4">
         <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
           <%= link_to "CROSSFIT", personalized_trainers_path(category: "Crossfit")%>
         </div>
       </div>
 
-      <div class="cards col-4">
+      <div class="cards col-md-4">
         <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),  url(https://images.unsplash.com/photo-1540111970170-b1c4d4fbadaa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
          <%= link_to "RUNNING", personalized_trainers_path(category: "Running")%>
-           </div>
-      </div>
-
-     <div class="cards col-4">
-        <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470920456752-d50214d7ed59?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
-        <%= link_to "CYCLING", personalized_trainers_path(category: "Cycling")%>
-        </div>
-    </div>
-
-  </div>
-
-    <div class="row">
-
-      <div class="cards col-4">
-        <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1596357395217-80de13130e92?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
-        <%= link_to "WEIGHTS", personalized_trainers_path(category: "Weights")%>
-        </div>
-      </div>
-
-
-    <div class="cards col-4">
-        <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1600881333168-2ef49b341f30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
-        <%= link_to "PILATES", personalized_trainers_path(category: "Pilates")%>
-        </div>
-      </div>
-
-      <div class="cards col-4">
-        <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1601818997638-a8cc7ef3b0d6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
-         <%= link_to "YOGA", personalized_trainers_path(category: "Yoga")%>
-        </div>
-      </div>
-
+       </div>
      </div>
 
-
-    <div class="container">
-      <div class="text btn btn-success">
-        <p> See more </p>
+     <div class="cards col-md-4">
+      <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470920456752-d50214d7ed59?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
+        <%= link_to "CYCLING", personalized_trainers_path(category: "Cycling")%>
       </div>
     </div>
 
-        <div class="container">
-          <div class="text btn btn-success">
-            <h2> Group classes </h2>
-            <h3> Personal training </h3>
-           </div>
-        </div>
-
-
-    </div>
   </div>
+
+  <div class="row">
+
+    <div class="cards col-md-4 rounded">
+      <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1596357395217-80de13130e92?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
+        <%= link_to "WEIGHTS", personalized_trainers_path(category: "Weights")%>
+      </div>
+    </div>
+
+
+    <div class="cards col-md-4">
+      <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1600881333168-2ef49b341f30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
+        <%= link_to "PILATES", personalized_trainers_path(category: "Pilates")%>
+      </div>
+    </div>
+
+    <div class="cards col-md-4">
+      <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1601818997638-a8cc7ef3b0d6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1)">
+       <%= link_to "YOGA", personalized_trainers_path(category: "Yoga")%>
+     </div>
+   </div>
+
+ </div>
+
+  <div class="mt-3">
+    <h4> SEE MORE </h4>
+  </div>
+
+  <div class="row">
+    <div class="cards col-md-6">
+      <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+       <%= link_to "Group classes", personalized_trainers_path(category: "Yoga")%>
+     </div>
+   </div>
+
+   <div class="cards col-md-6">
+      <div class="card-category d-flex justify-content-center align-items-center shadow rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+       <%= link_to "Personal training", personalized_trainers_path(category: "Yoga")%>
+     </div>
+   </div>
+  </div>
+
 </div>
 
 

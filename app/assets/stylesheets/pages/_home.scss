@@ -1,36 +1,30 @@
 // Specific CSS for your home-page
 
-.btn-success {
-  text-decoration: none;
-  color: black;
-  background-color: #EDB518;
-  border-color: #EDB518;
-}
 
-.btn-success:hover {
-    background-color: #C58D0B;
-    border-color: #EDB518;
+
+.theme-color {
+  color: #EDB518;
 }
 
  @supports (-webkit-text-stroke: 1px black) {
 .stroke-heading {
-    -webkit-text-stroke: 1px white;
+    -webkit-text-stroke: 1px black;
     -webkit-text-fill-color: transparent;
     font-family: Arial, Helvetica, sans-serif;
   }
 }
 
  body {
-  background: rgb(237,181,24);
-  background: linear-gradient(90deg, rgba(237,181,24,1) 0%, rgba(121,3,29,1) 63%, rgba(0,4,7,1) 92%);
+  background: rgb(255,255,255);
 }
 
-.cards-home .col-4 {
+.cards .col-4 {
   background-position: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 
-.card-category-home {
+.card-category {
   background-size: cover;
   align-content: space-between;
 }
