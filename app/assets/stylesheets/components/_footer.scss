@@ -1,10 +1,13 @@
 .footer {
   background: black;
-  display: flex;
+  //so it does not stick
+  position: absolute;
   align-items: center;
   justify-content: space-between;
-  height: auto;
-  padding: 0px 50px;
+  //I added this to make it be at the bottom and look nicer
+  height: 2.5rem;
+  width: 100%;
+  bottom: 0;
   color: #EDB518;
 }
 .footer-links {
@@ -28,3 +31,5 @@
 .footer-copyright {
   justify-content: space-around;
 }
+
+
