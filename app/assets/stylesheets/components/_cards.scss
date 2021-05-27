@@ -1,21 +1,24 @@
 .card-product {
-  overflow: hidden;
-  height: 250px;
+  height: auto;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
   align-items: center;
+  display: flex;
+}
+
+.extra {
+  flex-wrap: wrap;
 }
 
 .card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
+  height: auto;
+  width: 50%;
+  margin: auto;
   border-radius: 25px;
 }
 
 .card-product h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0;
 }
