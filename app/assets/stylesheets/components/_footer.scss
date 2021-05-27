@@ -1,19 +1,19 @@
 .footer {
   background: black;
-  //so it does not stick
-  position: absolute;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  //I added this to make it be at the bottom and look nicer
-  height: 2.5rem;
+  height: auto;
   width: 100%;
-  bottom: 0;
+  padding: 25px 50px;
   color: #EDB518;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: #EDB518;
   opacity: 0.60;
@@ -21,9 +21,11 @@
   font-size: 24px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 1;
 }
+
 .footer .fa-heart {
   color: #D23333;
 }
