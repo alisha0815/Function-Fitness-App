@@ -36,7 +36,9 @@
                       <% end %>
                       <%= simple_form_for booking do |f| %>
                       <%= f.input :status, as: :hidden, :input_html => { :value => "declined" } %>
-                      <%= f.button :submit, "decline", class: 'far fa-window-close' %>
+                      <%= button_tag do %>
+                        <i class='far fa-window-close'></i>
+                      <% end %>
                       <% end %>
                     <% end %>
                   </td>
@@ -124,12 +126,12 @@
             <th> Total Booking Fee </th>
             <th> My Goal </th>
             <th> Review </th>
-            <th> </th>
+            <th> Delete Booking </th>
           </tr>
 
           <% if @my_bookings %>
             <%@my_bookings.each do |booking|  %>
-              <% if booking.present? %>
+              <% if booking.status == "accepted" || booking.status == "declined" %>
                 <tr class="">
                   <td><%= booking.personalized_trainer.name %></td>
                   <td><%= booking.start_date %></td>
@@ -139,10 +141,12 @@
                   <td><%= booking.fee %>$</td>
                   <td><%= booking.goal %></td>
                   <td><%=link_to "Leave a review", new_booking_review_path(booking.id) %></td>
-                  <td> <%= link_to 'delete', booking_path(booking), method: :delete, data: { confirm: "Delete ?" } %> </td>
-                </tr>
+                  <td><%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, :input_html => { :value => "completed" } %>
+                      <%= f.button :submit, "complete", class: '' %>
+                      <% end %> </td>
+                <%end %>
               <%end %>
-            <%end %>
             <%end %>
         </table>
     </div>
