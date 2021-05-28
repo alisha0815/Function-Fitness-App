@@ -1,6 +1,6 @@
 <div class="container">
    <div class="col-md-8 m-auto">
-    <h3>Mailbox <i class="far fa-envelope"></i></h3>
+    <h3><i class="far fa-envelope"></i> Mailbox </h3>
 
     <div class="p-2 rounded m-2 ">
       <div class="">
@@ -18,13 +18,18 @@
     </div>
 
   <div class="">
-    <h3>My contacts </h3>
+    <h3><i class="far fa-address-book"></i> My contacts </h3>
     <div class="p-2 rounded m-2 w-50">
       <% @users.each do |user| %>
         <% if user.id != current_user.id %>
-          <div class="">
-            <p> <i class="fas fa-paper-plane"></i> <%= link_to 'Send a message ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>to <%= user.name %> </p>
-          </div>
+
+            <div class="mb-2 border-bottom">
+              <small> <i class="fas fa-hashtag"></i> <%= %> </small><br>
+              <small> <i class="fas fa-user"></i> <%= user.name %> </small><br>
+              <small> <i class="fas fa-mobile"></i> <%= user.mobile_num %> </small><br>
+              <small> <i class="fas fa-paper-plane"></i> <%= link_to 'Send a message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%> </small>
+            </div>
+
         <% end %>
       <% end %>
     </div>

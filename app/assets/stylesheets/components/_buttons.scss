@@ -47,7 +47,20 @@
   text-decoration: none;
 }
 
+.link-theme-yell {
+  color: #C58D0B;
+  text-decoration: none;
+}
+
 .link-theme-yell:hover a {
   color: #C58D0B;
   text-decoration: none;
 }
+
+button {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+}
+

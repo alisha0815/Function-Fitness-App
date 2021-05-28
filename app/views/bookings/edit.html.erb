@@ -1,14 +1,12 @@
 <div class="container">
- <div class="row justify-content-center">
+  <div class="row justify-content-center p-3">
+    <div class="col-md-6 m-2 p-4 form-card-shadow">
 
   <%= simple_form_for([@booking.personalized_trainer, @booking]) do |f| %>
 
-  <div class="row justify-content-center">
-  <h3> Change My Booking </h3>
-  </div>
-
-  <div class="row justify-content-center">
-  <h6><strong><%= @booking.personalized_trainer.category.upcase %></strong> PT : <strong><%= @booking.personalized_trainer.name %></strong></h6>
+  <div class= "row justify-content-center">
+    <h4> Change My Booking </h4>
+    <h5><%= @booking.personalized_trainer.category.upcase %>, <%= @booking.personalized_trainer.name %> </h5>
   </div>
 
   <div class="dates">
@@ -22,9 +20,11 @@
 
   <div class="form-inputs">
     <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
-    <%= f.submit "Update booking", class: "btn btn-success btn-lg btn-block btn-booking", data: { confirm: "Are you sure you want to change your booking?" } %>
-    <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-primary btn-lg btn-block btn-booking" %>
+    <%= f.submit "Update Booking", class: "btn-theme btn-block btn-booking", data: { confirm: "Are you sure you want to change your booking?" } %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "btn-theme-cancel btn-block text-center" %>
   </div>
   <% end %>
+
+    </div>
   </div>
 </div>

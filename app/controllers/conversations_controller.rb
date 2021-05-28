@@ -3,6 +3,7 @@ class ConversationsController < ApplicationController
 
   def index
     @users = User.all
+    # raise
     @conversations = Conversation.where(sender_id: current_user)
   end
 

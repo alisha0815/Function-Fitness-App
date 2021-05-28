@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  get 'about', to: 'pages#about'
+  get 'profile-page', to: 'pages#profile_page'
 
   resources :personalized_trainers do
     resources :bookings, only: [:create, :edit, :update, :destroy]
