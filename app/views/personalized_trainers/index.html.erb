@@ -16,24 +16,30 @@
     </div>
   </div>
 
+  <div class="p-2 m-2">
+    <h2> Trainers in selected map area <i class="fas fa-globe-africa"></i> </h2>
+  </div>
 
-  <h3> Trainers in selected map area: <i class="fas fa-globe-africa"></i> </h3>
-  <div class="row">
+  <div class="row pt-2">
 
     <div class="col-md-5 mb-2">
       <% @personalized_trainers.each do |personalized_trainer| %>
       <div class="card-product p-3 mb-3 bg-white rounded-card-border">
         <% if personalized_trainer.photo.attached? %>
-        <%= cl_image_tag personalized_trainer.photo.key, crop: :fill %>
+        <%= cl_image_tag personalized_trainer.photo.key, height: 300 , width: 200, :crop=>"fill", :radius => 20 %>
         <% else %>
         <p> " " </p>
         <% end %>
         <div class="card-product-infos">
-          <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id) %></h4>
-          <h5> Category: <%= personalized_trainer.category %></h5>
-          <p class="card-text"> <i class="fas fa-globe-africa"></i> <%= personalized_trainer.location %></p>
-          <p class="card-text"> <i class="fas fa-ellipsis-v"></i> <%= personalized_trainer.description %></p>
-          <p class="card-text"> € <%= personalized_trainer.rate %></p>
+          <div class="m-2">
+            <h4 class="card-title"><%= link_to personalized_trainer.name, personalized_trainer_path(personalized_trainer.id), class: 'link-remove-black' %></h4>
+            <h5> <%= personalized_trainer.category %></h5>
+          </div>
+          <div class="m-2 bttm-border">
+            <p class="card-text"> <i class="fas fa-globe-africa theme-color"></i> <%= personalized_trainer.location %></p>
+            <p class="card-text"> <i class="fas fa-university theme-color"></i> <%= personalized_trainer.education %></p>
+            <p class="card-text"> <i class="fas fa-euro-sign theme-color"></i> <%= personalized_trainer.rate %></p>
+          </div>
         </div>
       </div>
       <% end %>

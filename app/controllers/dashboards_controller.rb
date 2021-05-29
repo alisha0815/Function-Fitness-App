@@ -1,6 +1,5 @@
 class DashboardsController < ApplicationController
   def index
-
     # 3. My bookings with Trainers
     @my_bookings = current_user.bookings
     # @my_bookings = Booking.where(user: current_user)
@@ -25,6 +24,5 @@ class DashboardsController < ApplicationController
     @my_bookings.each do |booking|
       @confirmed_requests_count += 1 if booking.status == "accepted"
     end
-
   end
 end

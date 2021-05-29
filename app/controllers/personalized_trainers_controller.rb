@@ -50,11 +50,6 @@ class PersonalizedTrainersController < ApplicationController
     end
   end
 
-  def destroy
-    @personalized_trainer.destroy
-    redirect_to dashboard_path
-  end
-
   private
 
   def set_personalized_trainer

@@ -2,48 +2,51 @@
 
   <div class="row mb-3">
     <div class="col-12">
-      <h2 class="text-center"> <%= @personalized_trainer.name %> is a personal trainer in <%= @personalized_trainer.category %> </h2>
+      <h2 class="text-center mt-3"> <%= @personalized_trainer.name %> is a personal trainer in <%= @personalized_trainer.category %> </h2>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-7 form-card-shadow m-2 p-3">
+    <div class="col-md-6 form-card-shadow m-2 p-3">
       <div class="card-trip row">
 
-        <div class="col-md-5">
+        <div class="col-md-5 text-center">
           <% if @personalized_trainer.photo.attached? %>
-            <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, crop: :fill%>
+            <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, :gravity=>"faces", :crop=>"fill", :radius => 20 %>
           <% end %>
         </div>
 
-        <div class="card-trip-infos col-md-7">
-          <h4><%= @personalized_trainer.name %></h4>
-          <h5> Category: <%= @personalized_trainer.category %></h5>
-          <p> <i class="fas fa-globe-africa theme-color"></i> <%= @personalized_trainer.location %></p>
-          <p> <i class="fas fa-ellipsis-v"></i> <%= @personalized_trainer.description %></p>
-          <p> <i class="fas fa-university theme-color"></i> <%= @personalized_trainer.education %></p>
-          <p> € <%= @personalized_trainer.rate %></p>
+        <div class="card-trip-infos col-md-6 m-3">
+          <div class="mb-3">
+            <h3 class="font-weight-light"><%= @personalized_trainer.name %></h3>
+            <h4 class="grey font-weight-bold"> Category: <%= @personalized_trainer.category %></h4>
+          </div>
+          <div class="mt-2">
+            <p class="fs-paragraph"> <i class="fas fa-globe-africa theme-color"></i> <%= @personalized_trainer.location %></p>
+            <p class="fs-paragraph"> <i class="fas fa-university theme-color"></i> <%= @personalized_trainer.education %></p>
+            <p class="fs-paragraph"> <i class="fas fa-euro-sign theme-color"></i> <%= @personalized_trainer.rate %></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 p-3 m-2">
+          <p class="fs-paragraph"> <i class="fas fa-ellipsis-v theme-color"></i> <%= @personalized_trainer.description %></p>
         </div>
 
-      </div>
-    </div>
-
-
-
-    <div class="col-4 form-card-shadow m-2 p-3">
+   <div class="col-md-5 form-card-shadow m-2 p-3">
         <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
         <h3> Make a booking </h3>
         <div class="dates">
           <div class="form-inputs">
-            <div class="form-row">
+            <div class="form-row fs-paragraph">
               <%= f.input :start_date, as: :string, input_html: {type: :date} %>
               <%= f.input :end_date, as: :string, input_html: {type: :date} %>
             </div>
           </div>
         </div>
 
-        <div class="form-inputs">
-          <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
+        <div class="form-inputs fs-paragraph">
+          <%= f.input :goal, placeholder: "Give #{@personalized_trainer.name} an idea of your goal!", class: "btn btn-primary btn-lg btn-block btn-booking" %>
           <%= f.submit "Book now", class: "btn-theme btn-block btn-booking" %>
           <%= link_to "Browse", personalized_trainers_path, class: "btn-theme-cancel btn-block text-center" %>
         </div>
@@ -69,7 +72,7 @@
                 <i class="fas fa-star star-yellow theme-color"></i>
               <% end %>
               <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-              <p class="mb-0"><%= review.comment %></p>
+              <p class="mb-0 fs-paragraph"><%= review.comment %></p>
             </div>
             <small><em class="text-muted"> <%= booking.user.name %> </em></small>
           </div>
