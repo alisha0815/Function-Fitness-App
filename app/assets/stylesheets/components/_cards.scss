@@ -1,6 +1,6 @@
 .card-product {
   height: auto;
-  background: white;
+  background: #f4f6f8;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
   display: flex;
@@ -19,12 +19,12 @@
 
 .card-product h2 {
   font-size: 14px;
-  font-weight: bold;
   margin: 0;
 }
 
 .card-product h4 {
-  border-top: 2px solid #d1d1d1;
+  border-top: 2px solid #EDB518;
+  padding-top: 10px;
 }
 
 .card-product p {
@@ -43,7 +43,7 @@
   border-bottom: 4px solid #d1d1d1;
 }
 
-.rounded-card-border {
-  border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.bttm-border {
+  border-bottom: 2px solid #EDB518;
+  padding-bottom: 10px;
 }
