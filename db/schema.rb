@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_073004) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-    t.string "education", default: "Degree"
+    t.string "education"
     t.index ["user_id"], name: "index_personalized_trainers_on_user_id"
   end
 
