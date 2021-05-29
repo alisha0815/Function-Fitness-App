@@ -32,12 +32,8 @@
         <div class="col-md-12 p-3 m-2">
           <p> <i class="fas fa-ellipsis-v theme-color"></i> <%= @personalized_trainer.description %></p>
         </div>
-      </div>
-    </div>
 
-
-
-    <div class="col-md-5 form-card-shadow m-2 p-3">
+   <div class="col-md-5 form-card-shadow m-2 p-3">
         <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
         <h3> Make a booking </h3>
         <div class="dates">

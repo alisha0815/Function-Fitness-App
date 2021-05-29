@@ -10,6 +10,7 @@ class Booking < ApplicationRecord
   validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
+  #validate :start_date_after_today
   # validates_length_of :goal, minimum: 6
 
   def booked_date_range
@@ -25,4 +26,7 @@ class Booking < ApplicationRecord
       errors.add(:end_date, "must be after the start date")
     end
   end
+
+
+
 end
