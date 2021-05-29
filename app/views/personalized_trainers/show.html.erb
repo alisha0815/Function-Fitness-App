@@ -12,7 +12,7 @@
 
         <div class="col-md-5 text-center">
           <% if @personalized_trainer.photo.attached? %>
-            <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, :gravity=>"faces", :crop=>"fill", :radius => 20 %>
+          <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, :gravity=>"faces", :crop=>"fill", :radius => 20 %>
           <% end %>
         </div>
 
@@ -28,59 +28,62 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 p-3 m-2">
-          <p class="fs-paragraph"> <i class="fas fa-ellipsis-v theme-color"></i> <%= @personalized_trainer.description %></p>
-        </div>
+      <div class="mt-3 ml-3">
+        <p class="fs-paragraph"> <i class="fas fa-ellipsis-v theme-color"></i> <%= @personalized_trainer.description %></p>
+      </div>
+    </div>
 
-   <div class="col-md-5 form-card-shadow m-2 p-3">
-        <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
+    <div class="col-md-5 form-card-shadow m-2 p-3">
+      <div id='personalized_trainer-booking-dates' data-unavailable="<%= @personalized_trainer.unavailable_dates.to_json %>">
         <h3> Make a booking </h3>
         <div class="dates">
           <div class="form-inputs">
             <div class="form-row fs-paragraph">
-              <%= f.input :start_date, as: :string, input_html: {type: :date} %>
-              <%= f.input :end_date, as: :string, input_html: {type: :date} %>
+              <% if true %>
+              <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
+              <%= f.label :start_date, 'Start Date' %>
+              <%= f.input :start_date, placeholder: "To", as: :string, type: :text, label: false %>
+              <%= f.label :end_date, 'End Date' %>
+              <%= f.input :end_date, placeholder: "To", as: :string, type: :text, label: false %>
             </div>
           </div>
         </div>
 
         <div class="form-inputs fs-paragraph">
           <%= f.input :goal, placeholder: "Give #{@personalized_trainer.name} an idea of your goal!", class: "btn btn-primary btn-lg btn-block btn-booking" %>
-          <%= f.submit "Book now", class: "btn-theme btn-block btn-booking" %>
+          <%= f.submit "Book now", class: "btn-theme btn-block btn-booking", data: { confirm: "Are you sure you want to confirm your booking?" } %>
           <%= link_to "Browse", personalized_trainers_path, class: "btn-theme-cancel btn-block text-center" %>
         </div>
         <% end %>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-11 form-card-shadow m-3 p-4">
-      <h3>Reviews</h3>
-
-      <% if @bookings.empty? %>
-        <small><em class="text-muted">Be the first one to review <%= @personalized_trainer.name %> </em></small>
-      <% end %>
-
-      <% if @bookings %>
-        <% @bookings.each do |booking| %>
-          <% booking.review.each do |review| %>
-          <div class="border-bottom mt-3">
-            <div>
-              <% review.rating.times do %>
-                <i class="fas fa-star star-yellow theme-color"></i>
-              <% end %>
-              <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-              <p class="mb-0 fs-paragraph"><%= review.comment %></p>
-            </div>
-            <small><em class="text-muted"> <%= booking.user.name %> </em></small>
-          </div>
-          <% end %>
         <% end %>
-      <% end %>
-
+      </div>
     </div>
-  </div>
 
-</div>
+    <div class="row">
+      <div class="col-12 form-card-shadow m-3 p-4">
+        <h3>Reviews</h3>
+
+        <% if @bookings.empty? %>
+        <small><em class="text-muted">Be the first one to review <%= @personalized_trainer.name %> </em></small>
+        <% end %>
+        <% if @bookings %>
+        <% @bookings.each do |booking| %>
+        <% booking.review.each do |review| %>
+        <div class="border-bottom mt-3">
+          <div>
+            <% review.rating.times do %>
+            <i class="fas fa-star star-yellow theme-color"></i>
+            <% end %>
+            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+            <p class="mb-0 fs-paragraph"><%= review.comment %></p>
+          </div>
+          <small><em class="text-muted"> <%= booking.user.name %> </em></small>
+        </div>
+        <% end %>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
