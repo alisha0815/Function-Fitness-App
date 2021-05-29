@@ -62,6 +62,6 @@ class PersonalizedTrainersController < ApplicationController
   end
 
   def personalized_trainer_params
-    params.require(:personalized_trainer).permit(:name, :category, :description, :location, :rate, :photo, :user_id)
+    params.require(:personalized_trainer).permit(:name, :category, :description, :location, :rate, :photo, :user_id, :education)
   end
 end

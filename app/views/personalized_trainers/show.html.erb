@@ -7,22 +7,30 @@
   </div>
 
   <div class="row">
-    <div class="col-7 shadow m-2 p-3">
-      <div class="card-trip">
-       <% if @personalized_trainer.photo.attached? %>
-        <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, crop: :fill%>
-        <% end %>
-        <div class="card-trip-infos">
+    <div class="col-7 form-card-shadow m-2 p-3">
+      <div class="card-trip row">
+
+        <div class="col-md-5">
+          <% if @personalized_trainer.photo.attached? %>
+            <%= cl_image_tag @personalized_trainer.photo.key, height: 300 , width: 200, crop: :fill%>
+          <% end %>
+        </div>
+
+        <div class="card-trip-infos col-md-7">
           <h4><%= @personalized_trainer.name %></h4>
           <h5> Category: <%= @personalized_trainer.category %></h5>
           <p> <i class="fas fa-globe-africa theme-color"></i> <%= @personalized_trainer.location %></p>
-          <p> <%= @personalized_trainer.description %></p>
+          <p> <i class="fas fa-ellipsis-v"></i> <%= @personalized_trainer.description %></p>
+          <p> <i class="fas fa-university theme-color"></i> <%= @personalized_trainer.education %></p>
           <p> € <%= @personalized_trainer.rate %></p>
         </div>
+
       </div>
     </div>
 
-    <div class="col-4 shadow m-2 p-3">
+
+
+    <div class="col-4 form-card-shadow m-2 p-3">
         <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
         <h3> Make a booking </h3>
         <div class="dates">
@@ -43,8 +51,9 @@
     </div>
   </div>
 
+
   <div class="row">
-    <div class="col-11 shadow m-3 p-4">
+    <div class="col-11 form-card-shadow m-3 p-4">
       <h3>Reviews</h3>
 
       <% if @bookings.empty? %>
