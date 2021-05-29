@@ -19,29 +19,49 @@
           <p> <%= @personalized_trainer.description %></p>
           <p> € <%= @personalized_trainer.rate %></p>
         </div>
-      </div>
-    </div>
 
-    <div class="col-4 shadow m-2 p-3">
-        <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
-        <h3> Make a booking </h3>
-        <div class="dates">
-          <div class="form-inputs">
-            <div class="form-row">
-              <%= f.input :start_date, as: :string, input_html: {type: :date} %>
-              <%= f.input :end_date, as: :string, input_html: {type: :date} %>
+<div class="col-4 shadow m-2 p-3">
+  <div id='personalized_trainer-booking-dates' data-unavailable="<%= @personalized_trainer.unavailable_dates.to_json %>">
+    <h5> BOOK PT </h5>
+    <% if current_user.id != @personalized_trainer.user_id  %>
+       <%= simple_form_for([@personalized_trainer, @booking]) do |f| %>
+         <div class="form-inputs">
+           <div class="form-row">
+             <%= f.label :start_date, 'Start Date' %>
+             <%= f.input :start_date, placeholder: "To", as: :string, type: :text, label: false %>
+             <%= f.label :end_date, 'End Date' %>
+             <%= f.input :end_date, placeholder: "To", as: :string, type: :text, label: false %>
+             <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
             </div>
           </div>
-        </div>
-
-        <div class="form-inputs">
-          <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
-          <%= f.submit "Book now", class: "btn btn-success btn-lg btn-block btn-booking" %>
-          <%= link_to "Browse", personalized_trainers_path, class: "btn btn-primary btn-lg btn-block btn-booking" %>
-        </div>
+          
+          <div>
+            <table class="table">
+              <tr>
+                <td>NOK<%= @personalized_trainer.rate %> x <%#= (@booking.end_date - @booking.start_date).to_i %> days</td>
+                <td class="text-right"></td>
+              </tr>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td class="text-right">NOK <%#= @booking.fee %></td>
+              </tr>
+            </table>
+          </div>
+          
+          <div class="form-inputs">
+            <%= f.submit "Book", class: "btn-theme btn-block btn-booking", data: { confirm: "Are you sure you want to confirm your booking?" } %>
+            <%= link_to "Browse", personalized_trainers_path, class: "btn-theme-cancel btn-block text-center" %>
+          </div>
         <% end %>
-    </div>
-  </div>
+    <% end %>
+ </div>
+</div>
+
+
+
+
+
+
 
   <div class="row">
     <div class="col-11 shadow m-3 p-4">

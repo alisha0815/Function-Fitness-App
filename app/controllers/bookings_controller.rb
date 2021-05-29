@@ -8,8 +8,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.fee = @personalized_trainer.rate * (@booking.end_date - @booking.start_date).to_i
     if @booking.save
-      flash[:notice] = "You have booked your personal trainer successfully"
-      redirect_to dashboard_path(current_user)
+      flash[:notice] = "Booked successfully"
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      # raise
       redirect_to dashboard_path(current_user)
       flash[:notice] = 'Booking updated!'
     else

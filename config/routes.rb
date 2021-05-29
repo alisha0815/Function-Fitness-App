@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
 
   resources :personalized_trainers do
-    resources :bookings, only: [:create, :edit, :update, :destroy]
+    resources :bookings, only: [:create, :edit, :update, :destroy, :show]
   end
 
   get 'dashboard', to: 'dashboards#index'
@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  resources :orders, only: [:show, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
