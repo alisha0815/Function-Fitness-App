@@ -15,7 +15,7 @@
         <div class="card-trip-infos">
           <h4><%= @personalized_trainer.name %></h4>
           <h5> Category: <%= @personalized_trainer.category %></h5>
-          <p> City: <%= @personalized_trainer.location %></p>
+          <p> <i class="fas fa-globe-africa theme-color"></i> <%= @personalized_trainer.location %></p>
           <p> <%= @personalized_trainer.description %></p>
           <p> € <%= @personalized_trainer.rate %></p>
         </div>
@@ -34,6 +34,7 @@
              <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
             </div>
           </div>
+<<<<<<< HEAD
           
           <div>
             <table class="table">
@@ -52,6 +53,15 @@
             <%= f.submit "Book", class: "btn-theme btn-block btn-booking", data: { confirm: "Are you sure you want to confirm your booking?" } %>
             <%= link_to "Browse", personalized_trainers_path, class: "btn-theme-cancel btn-block text-center" %>
           </div>
+=======
+        </div>
+
+        <div class="form-inputs">
+          <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
+          <%= f.submit "Book now", class: "btn-theme btn-block btn-booking" %>
+          <%= link_to "Browse", personalized_trainers_path, class: "btn-theme-cancel btn-block text-center" %>
+        </div>
+>>>>>>> master
         <% end %>
     <% end %>
  </div>
@@ -75,8 +85,13 @@
         <% @bookings.each do |booking| %>
           <% booking.review.each do |review| %>
           <div class="border-bottom mt-3">
-            <small><em class="text-muted"> <%= review.comment %> </em></small>
-            <p><em class="text-muted"> Rating: <%= review.rating %> </em></p>
+            <div>
+              <% review.rating.times do %>
+                <i class="fas fa-star star-yellow theme-color"></i>
+              <% end %>
+              <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+              <p class="mb-0"><%= review.comment %></p>
+            </div>
             <small><em class="text-muted"> <%= booking.user.name %> </em></small>
           </div>
           <% end %>

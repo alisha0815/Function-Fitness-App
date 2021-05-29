@@ -1,0 +1,66 @@
+.btn-theme {
+  text-decoration: none;
+  color: white;
+  background-color: #EDB518;
+  border-color: #EDB518;
+  border: 1px solid #EDB518;
+  padding: 8px 24px;
+  border-radius: 50px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.btn-theme:hover {
+    background-color: #C58D0B;
+    border-color: #EDB518;
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+}
+
+.btn-theme-cancel {
+  text-decoration: none;
+  color: white;
+  background-color: #000407;
+  border-color: #000407;
+  border: 1px solid #000407;
+  padding: 8px 24px;
+  border-radius: 50px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-theme-cancel:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+}
+
+.text-theme-yell {
+  color: #C58D0B;
+  text-decoration: none;
+}
+
+.link-theme-yell a {
+  color: #C58D0B;
+  text-decoration: none;
+}
+
+.link-theme-yell {
+  color: #C58D0B;
+  text-decoration: none;
+}
+
+.link-theme-yell:hover a {
+  color: #C58D0B;
+  text-decoration: none;
+}
+
+button {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+}
+

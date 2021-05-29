@@ -1,23 +1,38 @@
-
-
 <div class="container">
 
-  <div class="">
-    <h2>How was your session with <%= @booking.personalized_trainer.name %> ?</h2>
-    <h3> Leave a Review: </h3>
-  </div>
+  <div class= "row justify-content-center p-4">
 
-  <div class="row">
-    <div class="col-6">
-      <%= simple_form_for [@booking, @review] do |f| %>
-        <%= f.input :comment %>
-        <%= f.input :rating, input_html: { min: '0', max: '5', step: '1' } %>
-        <%= f.input :recommend, as: :radio_buttons %>
-        <%= f.submit "Submit review", class: "btn btn-success" %>
+    <div class="col-md-2">
+      <% if @booking.personalized_trainer.photo.attached? %>
+        <td> <%= cl_image_tag @booking.personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, radius: "max", :crop=>"fill"%> </td>
+      <% else %>
+        <td> </td>
       <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h3> <strong>  How was your session with <%= @booking.personalized_trainer.name %>? </strong> </h3>
     </div>
   </div>
 
+  <div class="row justify-content-center p-3 mb-2">
+    <div class="col-md-6 m-2 p-3 form-card-shadow">
+
+      <div class="m-3">
+        <h4> Leave a Review: </h4>
+      </div>
+
+      <div class="m-3">
+        <%= simple_form_for [@booking, @review] do |f| %>
+          <%= f.input :comment %>
+          <%= f.input :rating, input_html: { min: '0', max: '5', step: '1' } %>
+          <%= f.input :recommend, as: :radio_buttons %>
+          <%= f.submit "Submit review", class: "btn-theme" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 

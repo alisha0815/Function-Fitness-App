@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :bookings
   # validations for user attributes?
   has_many :conversations, foreign_key: :sender_id
+
+  has_one_attached :photo
 end

@@ -1,15 +1,22 @@
 
 <div class="container">
-  <div class="">
-    <h1 class="stroke-heading"> Dashboard </h1>
-    <h2 class="stroke-heading"> Welcome <%= current_user.name %> </h2>
+
+  <div class="row mb-3">
+    <div class="col-md-6 m-3">
+      <h1 class="mb-2"> <i class="fas fa-chart-line"></i> Dashboard </h1>
+      <h3 class="link-theme-yell"> Welcome <%= link_to current_user.name %>! </h3>
+    </div>
+    <div class="col-md-6">
+
+    </div>
   </div>
 
-  <div class="row">
-    <div class="col-5">
-      <h3> Pending Client Requests </h3>
-      <p> Please confirm client requests: <% if @requests.count > 0 %><%= @requests.count %><% end %> </p>
-      <table class="table table-hover table-responsive table-sm shadow">
+  <div class="row mb-3">
+
+    <div class="col-md-5">
+      <h3 class="mb-3"> <i class="fab fa-product-hunt"></i> Pending Client Requests </h3>
+      <p class="text-theme-yell"> Please confirm client requests: <% if @pending_requests_count %><%= @pending_requests_count %><% end %> </p>
+      <table class="table table-striped table-hover table-responsive table-sm table-shadow">
       <tr class="">
         <th> Personal Trainer </th>
         <th> Start Date </th>
@@ -22,19 +29,23 @@
           <% @requests.each do |trainer| %>
             <%trainer.bookings.each do |booking| %>
               <% if booking.status == "pending" %>
-                <tr class="table-light">
+                <tr class="">
                   <td><%= trainer.name %></td>
                   <td><%= booking.start_date %></td>
                   <td><%= booking.end_date %></td>
-                  <td>
+                  <td class="text-center btn-group">
                     <% if booking.status == "pending" %>
                       <%= simple_form_for booking do |f| %>
                       <%= f.input :status, as: :hidden, :input_html => { :value => "accepted" } %>
-                      <%= f.button :submit, "accept", class: 'far fa-check-circle' %>
+                      <%= button_tag do %>
+                        <i class='far fa-check-circle theme-color p-2'></i>
+                      <% end %>
                       <% end %>
                       <%= simple_form_for booking do |f| %>
                       <%= f.input :status, as: :hidden, :input_html => { :value => "declined" } %>
-                      <%= f.button :submit, "decline", class: 'far fa-window-close' %>
+                      <%= button_tag do %>
+                        <i class='far fa-window-close theme-color p-2'></i>
+                      <% end %>
                       <% end %>
                     <% end %>
                   </td>
@@ -46,9 +57,9 @@
         <% end %>
       </table>
 
-      <h3> Client Reservations </h3>
-      <p> Confirmed client reservations: </p>
-      <table class="table table-hover table-responsive table-sm shadow">
+      <h3 class="mb-3"> <i class="fab fa-adn"></i> Client Reservations </h3>
+      <p class="text-theme-yell"> Confirmed client reservations: <% if @confirmed_requests_count %><%= @confirmed_requests_count %><% end %></p>
+      <table class="table table-striped table-hover table-responsive table-sm table-shadow">
         <tr class="">
           <th> Personal Trainer </th>
           <th> Start Date </th>
@@ -65,7 +76,7 @@
                   <td><%= trainer.name %></td>
                   <td><%= booking.start_date %></td>
                   <td><%= booking.end_date %></td>
-                  <td><%= booking.status %></td>
+                  <td><%= booking.status.capitalize %></td>
                   <td><%= booking.user.name %></td>
                 </tr>
               <%end %>
@@ -75,10 +86,10 @@
       </table>
     </div>
 
-    <div class="col-7">
-      <h3> My Team </h3>
-      <p> Edit your team: </p>
-      <table class="table table-hover table-sm shadow">
+    <div class="col-md-7">
+      <h3 class="mb-3"> <i class="fas fa-users"></i> My Team </h3>
+      <p class="text-theme-yell"> Edit your team or <%= link_to ' add Personal Trainer', new_personalized_trainer_path, class: 'btn-theme' %> </p>
+      <table class="table table-striped table-hover table-responsive table-sm table-shadow">
         <tr class="">
           <th> </th>
           <th> <%= link_to "Trainer", :sort => "name"%> </th>
@@ -89,9 +100,9 @@
           <th> </th>
         </tr>
         <% @personalized_trainers.each do |personalized_trainer| %>
-          <tr class="table-light">
+          <tr class="">
             <% if personalized_trainer.photo.attached? %>
-              <td> <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, :crop=>"thumb"%> </td>
+              <td> <%= cl_image_tag personalized_trainer.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, radius: '', :crop=>"thumb"%> </td>
             <% else %>
                 <td> </td>
             <% end %>
@@ -99,19 +110,26 @@
             <td> <%= personalized_trainer.category %> </td>
             <td> <%= personalized_trainer.location %> </td>
             <td> <%= personalized_trainer.rate %> </td>
-            <td> <%= link_to "edit", edit_personalized_trainer_path(personalized_trainer) %> </td>
-            <td> <%= link_to 'delete', personalized_trainer_path(personalized_trainer), method: :delete, data: { confirm: "Delete ?" } %> </td>
+            <td> <%= link_to edit_personalized_trainer_path(personalized_trainer) do %>
+              <i class="far fa-edit link-theme-yell"></i>
+              <% end %>
+            </td>
+            <td> <%= link_to personalized_trainer_path(personalized_trainer), method: :delete, data: { confirm: "Delete ?" } do %>
+              <i class="fas fa-trash-alt link-theme-yell"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
+
   </div>
 
-  <div class="row">
-    <div class="col-12">
-      <h3> <%= current_user.name %>'s Training Sessions </h3>
-        <p> These are the sessions that you have booked: </p>
-        <table class="table table-hover table-responsive table-sm shadow">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h3 class="mb-3"> <i class="fas fa-dumbbell"></i> <%= current_user.name %>'s Training Sessions </h3>
+        <p class="text-theme-yell"> These are the sessions that you have booked: </p>
+        <table class="table table-sm table-hover table-shadow">
           <tr class="">
             <th> Personal Trainer </th>
             <th> Start Date </th>
@@ -119,30 +137,41 @@
             <th> Reservation Status </th>
             <th> Change Reservation </th>
             <th> Total Booking Fee </th>
-            <th> Review </th>
             <th> My Goal </th>
-            <th> </th>
+            <th> Review </th>
+            <th> Remove </th>
           </tr>
 
           <% if @my_bookings %>
             <%@my_bookings.each do |booking|  %>
-              <% if booking.present? %>
-                <tr class="table-light">
+              <% if booking.status == "accepted" || booking.status == "declined" %>
+                <tr class="">
                   <td><%= booking.personalized_trainer.name %></td>
                   <td><%= booking.start_date %></td>
                   <td><%= booking.end_date %></td>
-                  <td><%= booking.status %></td>
+                  <td><%= booking.status.capitalize %></td>
                   <td><%= link_to "Edit booking", edit_personalized_trainer_booking_path(booking.personalized_trainer_id, booking) %></td>
                   <td><%= booking.fee %>$</td>
                   <td><%= booking.goal %></td>
                   <td><%=link_to "Leave a review", new_booking_review_path(booking.id) %></td>
-                  <td> <%= link_to 'delete', booking_path(booking), method: :delete, data: { confirm: "Delete ?" } %> </td>
-                </tr>
+                  <td><%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, :input_html => { :value => "completed" } %>
+                      <%= button_tag do %>
+                      <i class="fas fa-minus-square theme-color p-2"></i>
+                      <% end %>
+                      <% end %>
+                  </td>
+                <%end %>
               <%end %>
-            <%end %>
             <%end %>
         </table>
     </div>
+  </div>
+
+  <div class="col-md-12">
+    <h3 class="mb-3"> <i class="fas fa-file-invoice"></i> Accounts </h3>
+    <p> <%= link_to "Visit Accounts & Billing" %> </p>
+    <p> <%= link_to "Send Invoice" %> </p>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 <div class="container">
- <div class="row justify-content-center">
+  <div class="row justify-content-center p-3">
+    <div class="col-md-6 m-2 p-4 form-card-shadow">
 
     <div class="col-4 shadow m-2 p-3">
       <div id='personalized_trainer-booking-dates' data-unavailable="<%= @booking.personalized_trainer.unavailable_dates.to_json %>">
@@ -29,6 +30,7 @@
                  <%= f.input :start_date, placeholder: "From", as: :string, type: :text, label:false %>
                  <%= f.label :end_date, 'End Date' %>
                  <%= f.input :end_date, placeholder: "To", as: :string, type: :text, label:false %>
+                 <%= f.input :goal, class: "btn btn-primary btn-lg btn-block btn-booking" %>
                 </div>
               </div>
 
@@ -44,8 +46,8 @@
               </table>
     
               <div class="form-inputs">
-                <%= f.submit "Update", class: "btn-theme btn-block btn-booking", data: { confirm: "Are you sure you want to rebook?" } %>
-                <%= link_to "Back to my bookings", personalized_trainers_path, class: "btn-theme-cancel btn-block text-center" %>
+                <%= f.submit "Update Booking", class: "btn-theme btn-block btn-booking", data: { confirm: "Are you sure you want to rebook?" } %>
+                <%= link_to "Back to Dashboard", dashboard_path, class: "btn-theme-cancel btn-block text-center" %>
               </div>
             <% end %>
         <% end %>

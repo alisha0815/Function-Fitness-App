@@ -1,0 +1,12 @@
+<h1> Profile Page </h1>
+
+<% if current_user.photo.attached? %>
+  <%= cl_image_tag current_user.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, radius: "max", :crop=>"fill"%>
+<% end %>
+
+<p> <%= current_user.name %></p>
+<p> <%= current_user.gender %></p>
+<p> <%= current_user.age %></p>
+<p> <%= current_user.location %></p>
+<p> <%= current_user.weight %></p>
+<p> <%= current_user.mobile_num %></p>

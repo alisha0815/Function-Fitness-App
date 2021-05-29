@@ -11,5 +11,20 @@ class DashboardsController < ApplicationController
 
     # 1. incoming pending requests
     @requests = @personalized_trainers
+    # raise
+
+    # COUNTS
+
+    # 4. Count my pending requests
+    @pending_requests_count = 0
+    @my_bookings.each do |booking|
+      @pending_requests_count += 1 if booking.status == "pending"
+    end
+
+    @confirmed_requests_count = 0
+    @my_bookings.each do |booking|
+      @confirmed_requests_count += 1 if booking.status == "accepted"
+    end
+
   end
 end
