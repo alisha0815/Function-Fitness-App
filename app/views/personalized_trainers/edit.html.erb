@@ -19,7 +19,8 @@
         <%= simple_form_for(@personalized_trainer) do |f| %>
         <%= f.input :name %>
         <%= f.input :category, placeholder: 'eg. crossfit' %>
-        <%= f.input :description, placeholder: 'eg. education' %>
+        <%= f.input :education, placeholder: 'eg. university/diploma' %>
+        <%= f.input :description, placeholder: 'eg. tell us about your trainer' %>
         <%= f.input :location, placeholder: 'eg. city' %>
         <%= f.input :rate, placeholder: 'per day' %>
         <%= f.input :photo, as: :file %>

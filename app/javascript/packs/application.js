@@ -50,13 +50,3 @@ document.addEventListener('turbolinks:load', () => {
   // loadDynamicBannerText();
 });
 
-
-
-
-
-
-
-
-
-
-
