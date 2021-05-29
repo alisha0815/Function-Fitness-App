@@ -1,15 +1,30 @@
-<h1> Profile Page </h1>
+<div class="container ">
+  <div class="row justify-content-center p-3 profile-page-margin">
+    <div class="col-md-6 m-2 p-4 form-card-shadow">
+      <div class= "row justify-content-center">
+        <div class="col-md-9">
+        
+          <h1> Profile Page </h1>
+          <h6>Welcome, <%= current_user.name.capitalize %></h6>
 
-<% if current_user.photo.attached? %>
-  <%= cl_image_tag current_user.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, radius: "max", :crop=>"fill"%>
-<% end %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, :gravity=>"face", :height=>100, :width=>100, :zoom=>0.7, radius: "max", :crop=>"fill"%>
+          <% end %>
 
-<p> <%= current_user.name %></p>
-<p> <%= current_user.gender %></p>
-<p> <%= current_user.age %></p>
-<p> <%= current_user.location %></p>
-<p> <%= current_user.weight %></p>
-<p> <%= current_user.mobile_num %></p>
+          <p>Name: <%= current_user.name.capitalize %></p>
+          <p>Gender: <%= current_user.gender.capitalize %></p>
+          <p>Age: <%= current_user.age %></p>
+          <p>From: <%= current_user.location.capitalize %></p>
+          <p>Weight: <%= current_user.weight %>Kg</p>
+          <p>Phone: <%= current_user.mobile_num %></p>
+          <div class="btn-margin">
+             <%= link_to "Edit Page", edit_user_registration_path, class: 'btn-theme' %>
+          </div>
+       
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<%= link_to "edit page", edit_user_registration_path, class: '' %>

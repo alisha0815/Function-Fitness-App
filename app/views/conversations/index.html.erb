@@ -1,6 +1,6 @@
-<div class="container">
-   <div class="col-md-8 m-auto">
-    <h3><i class="far fa-envelope"></i> Mailbox </h3>
+<div class="container" id="inbox-form-card-margin">
+   <div class="col-md-8 m-auto form-card-shadow">
+    <h3><i class="far fa-envelope"></i> Messages </h3>
 
     <div class="p-2 rounded m-2 ">
       <div class="">
@@ -11,7 +11,7 @@
             <% else %>
               <% recipient = User.find(conversation.sender_id) %>
             <% end %>
-            <p> <%= link_to recipient.name, conversation_messages_path(conversation) %> </p>
+            <p class="link-remove"> <%= link_to recipient.name, conversation_messages_path(conversation), class: "link-remove" %> </p>
           <% end %>
         <% end %>
       </div>
@@ -24,10 +24,17 @@
         <% if user.id != current_user.id %>
 
             <div class="mb-2 border-bottom">
-              <small> <i class="fas fa-hashtag"></i> <%= %> </small><br>
-              <small> <i class="fas fa-user"></i> <%= user.name %> </small><br>
-              <small> <i class="fas fa-mobile"></i> <%= user.mobile_num %> </small><br>
-              <small> <i class="fas fa-paper-plane"></i> <%= link_to 'Send a message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%> </small>
+              <div class="trio-margin">
+                <small> <i class="fas fa-hashtag"></i> <%= %> </small><br>
+                <small> <i class="fas fa-user"></i> <%= user.name %> </small><br>
+                <small> <i class="fas fa-mobile"></i> <%= user.mobile_num %> </small><br>
+              </div>
+              
+
+              <div class="btn-margin-inbox">
+                <small> <i class="fas fa-paper-plane "></i> <%= link_to 'Send a message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class:"btn-theme"%> </small>
+              </div>
+              
             </div>
 
         <% end %>

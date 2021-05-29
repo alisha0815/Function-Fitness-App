@@ -30,7 +30,10 @@
       <div class="m-2">
         <%= f.submit "Send", class: "" %>
       </div>
-        <%= link_to "Back to Messages", conversations_path, class: "" %>
+      <div class="btn-theme-cancel-margin">
+        <%= link_to "Back to Messages", conversations_path, class: "btn-theme-cancel" %>
+      </div>
+        
       <% end %>
     </div>
 
