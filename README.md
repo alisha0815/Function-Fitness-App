@@ -1,1 +1,11 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Check it out: [Let's date!](https://circuit-speed-dating.herokuapp.com/)
+
+## Tech Stack 
+* Ruby
+* Ruby on Rails
+* Bootstrap
+* JavaScript & jQuery
+* Mapbox API
+
+### Deployment :rocket:
+* Deployed on Heroku 
