@@ -1,4 +1,4 @@
-#Function Fitness App
+# Function Fitness App
 
 Find your personal trainer wherever you are, and whenever you want!
 
