@@ -7,9 +7,10 @@ Find your personal trainer wherever you are, and whenever you want!
 ## Tech Stack 
 * Ruby
 * Ruby on Rails
-* Bootstrap
 * JavaScript & jQuery
+* PostgreSQL
 * Mapbox API
+* Bootstrap
 
 ### Deployment :rocket:
 * Deployed on Heroku 
