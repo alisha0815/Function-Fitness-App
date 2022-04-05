@@ -12,5 +12,7 @@ Find your personal trainer wherever you are, and whenever you want!
 * Mapbox API
 * Bootstrap
 
-### Deployment :rocket:
-* Deployed on Heroku 
+## 🚀 Contributors
+<p align="left"> 
+ This app was built in collaboration with other three developers, <strong>Kyle Danny, Alin Epifanov, Matthaios Stioukis.</strong>
+  </p>
